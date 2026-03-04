@@ -9,8 +9,8 @@ const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 const iconVariants = cva("shrink-0 leading-none", {
   variants: {
     size: {
-      24: "w-6 h-6",
-      32: "w-8 h-8",
+      24: "w-[24px] h-[24px]",
+      32: "w-[32px] h-[32px]",
       60: "w-[60px] h-[60px]",
     },
   },
