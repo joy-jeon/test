@@ -1,0 +1,167 @@
+import { Button } from '@/components/atoms/Button'
+import { Icon } from '@/components/atoms/Icon'
+
+function VariantBlock({
+  title,
+  description,
+  able,
+  disabled,
+}: {
+  title: string
+  description?: string
+  able: React.ReactNode
+  disabled: React.ReactNode
+}) {
+  return (
+    <section className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+      <h3 className="text-sm font-semibold text-slate-800">{title}</h3>
+      {description && <p className="mt-1 text-xs text-slate-500">{description}</p>}
+
+      <div className="mt-3 grid gap-3 md:grid-cols-2">
+        <div className="rounded-md border border-slate-200 bg-white p-3">
+          <p className="text-xs font-medium text-emerald-700">Able</p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">{able}</div>
+        </div>
+
+        <div className="rounded-md border border-slate-200 bg-white p-3">
+          <p className="text-xs font-medium text-slate-500">Disabled</p>
+          <div className="mt-2 flex flex-wrap items-center gap-2">{disabled}</div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export function ButtonPreview() {
+  return (
+    <section className="rounded-xl border border-slate-200 bg-white p-5">
+      <h2 className="text-xl font-semibold text-slate-900">Button Preview</h2>
+      <p className="mt-1 text-sm text-slate-600">Variant별로 Able / Disabled 상태를 나눠서 확인</p>
+
+      <div className="mt-6 space-y-4">
+        <VariantBlock
+          title="Primary Solid"
+          able={
+            <>
+              <Button variant="primarySolid">primarySolid</Button>
+              <Button variant="primarySolid" leftIcon={<Icon name="plus" size={24} />}>
+                primarySolid
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="primarySolid" disabled>
+                primarySolid
+              </Button>
+              <Button variant="primarySolid" leftIcon={<Icon name="plus" size={24} />} disabled>
+                primarySolid
+              </Button>
+            </>
+          }
+        />
+
+        <VariantBlock
+          title="Primary Line"
+          able={
+            <>
+              <Button variant="primaryLine">primaryLine</Button>
+              <Button variant="primaryLine" leftIcon={<Icon name="setting" size={24} />}>
+                primaryLine
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="primaryLine" disabled>
+                primaryLine
+              </Button>
+              <Button variant="primaryLine" leftIcon={<Icon name="setting" size={24} />} disabled>
+                primaryLine
+              </Button>
+            </>
+          }
+        />
+
+        <VariantBlock
+          title="Secondary"
+          able={
+            <>
+              <Button variant="secondarySolid" size="md">
+                secondarySolid
+              </Button>
+              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size={24} />}>
+                secondaryLine
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="secondarySolid" size="md" disabled>
+                secondarySolid
+              </Button>
+              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size={24} />} disabled>
+                secondaryLine
+              </Button>
+            </>
+          }
+        />
+
+        <VariantBlock
+          title="Generate"
+          able={
+            <>
+              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size={24} />}>
+                과제생성
+              </Button>
+              <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size={32} />}>
+                과제생성
+              </Button>
+              <Button variant="generate" size="generateLg" leftIcon={<Icon name="ai" size={48} />}>
+                과제생성
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size={24} />} disabled>
+                과제생성
+              </Button>
+            </>
+          }
+        />
+
+        <VariantBlock
+          title="Icon Variants"
+          description="input reset 같은 아이콘 전용 버튼 확인"
+          able={
+            <>
+              <Button variant="iconSolid" aria-label="검색">
+                <Icon name="search" size={24} />
+              </Button>
+              <Button variant="iconLine" aria-label="설정">
+                <Icon name="plus" size={24} />
+              </Button>
+              <Button variant="icon" aria-label="초기화">
+                <Icon name="closeCircleFill" size={16} />
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="iconSolid" aria-label="검색" disabled>
+                <Icon name="search" size={24} />
+              </Button>
+              <Button variant="iconLine" aria-label="설정" disabled>
+                <Icon name="plus" size={24} />
+              </Button>
+              <Button variant="icon" aria-label="초기화" disabled>
+                <Icon name="closeCircleFill" size={16} />
+              </Button>
+            </>
+          }
+        />
+      </div>
+    </section>
+  )
+}

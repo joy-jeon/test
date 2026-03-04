@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --gra01: linear-gradient(100deg, #687AE6 5.88%, #9C5BCB 51.34%, #D03BAF 96.79%);
+  --gra02: linear-gradient(100deg, #9CA8FF 5.88%, #D867BF 96.79%);
+  --gra03: linear-gradient(100deg, #4A5EDA 5.88%, #FF00C7 96.79%);
+}
+
+@layer utilities {
+  @keyframes icon60Float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-2px) scale(1.03); }
+  }
+
+  @keyframes icon60Twinkle {
+    0%, 100% { opacity: 0.7; transform: scale(0.92); }
+    50% { opacity: 1; transform: scale(1.08); }
+  }
+
+  @keyframes icon60Pulse {
+    0%, 100% { transform: scale(0.94); opacity: 0.9; }
+    50% { transform: scale(1.02); opacity: 1; }
+  }
+
+  @keyframes icon60Drift {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(1px, -1px); }
+  }
+
+  @keyframes icon60AISoftFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-2.4px) scale(1.014); }
+  }
+
+  @keyframes icon60FlowTile {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(260px); }
+  }
+
+  @keyframes icon60FlowTileSlow {
+    0% { transform: translateX(0); opacity: 0.35; }
+    50% { opacity: 0.8; }
+    100% { transform: translateX(260px); opacity: 0.35; }
+  }
+}

@@ -1,75 +1,356 @@
-import React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
-import { twMerge } from "tailwind-merge";
-import { clsx, type ClassValue } from "clsx";
+import React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+import { clsx, type ClassValue } from 'clsx'
+import { ICON24_RAW_MAP, type Icon24RawName } from '@/components/atoms/icon24Raw'
+import { ICON32_RAW_MAP, type Icon32RawName } from '@/components/atoms/icon32Raw'
+import { ICON60_RAW_MAP, type Icon60RawName } from '@/components/atoms/icon60Raw'
 
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
-// 1. 크기 규격 정의 (디자인 가이드 기준)
-const iconVariants = cva("shrink-0 leading-none", {
+const iconVariants = cva('inline-block shrink-0', {
   variants: {
     size: {
-      24: "w-[24px] h-[24px]",
-      32: "w-[32px] h-[32px]",
-      60: "w-[60px] h-[60px]",
+      16: 'w-[16px] h-[16px]', // 예외) input 안의 기능
+      24: 'w-[24px] h-[24px]',
+      32: 'w-[32px] h-[32px]',
+      48: 'w-[48px] h-[48px]', // 예외) 과제 생성 size Lg
+      60: 'w-[60px] h-[60px]',
     },
   },
   defaultVariants: {
     size: 24,
   },
-});
+})
 
-// 2. 아이콘 이름 타입 정의 (이미지에 있는 것들 위주로 예시)
-export type IconName = 
-  | "arrow-up" | "arrow-down" | "plus" | "minus" | "search" | "close" | "home" | "settings"
-  | "file-star" | "sparkle"; // 그라데이션 아이콘 포함
+export type IconName =
+  | 'arrow-left1'
+  | 'arrow-left'
+  | 'arrow-right'
+  | 'arrow-up'
+  | 'arrow-down'
+  | 'arrow1-left'
+  | 'arrow1-right'
+  | 'arrow1-up'
+  | 'arrow1-down'
+  | 'plus'
+  | 'minus'
+  | 'close'
+  | 'closeCircleFill'
+  | 'checkSmall'
+  | 'sClose'
+  | 'fileDown'
+  | 'fileDownUpload'
+  | 'clip'
+  | 'search'
+  | 'setting'
+  | 'lock'
+  | 'unlock'
+  | 'calendar'
+  | 'delete'
+  | 'openNew'
+  | 'info'
+  | 'infoFill'
+  | 'c'
+  | 'attention'
+  | 'attentionFill'
+  | 'question'
+  | 'time'
+  | 'home'
+  | 'man'
+  | 'man1'
+  | 'copy'
+  | 'closeCircle'
+  | 'siren'
+  | 'ai'
+  | 'doc'
+  | 'addPhoto'
+  | 'building'
+  | 'chartLine'
+  | 'chartPie'
+  | 'next'
+  | 'ok'
+  | 'aiPen'
+  | 'aiSquare'
+  | 'aiGenerate'
+  | 'image'
+  | 'aiCamera'
+  | 'magicEraser'
+  | 'folder'
+  | 'folderUP'
+  | 'message'
+  | 'share'
+  | 'hourglass'
+  | 'fileFailed'
+  | 'filter'
+  | 'rowMove'
+  | 'menu'
+  | 'aiGenerate60v1'
+  | 'aiGenerate60v2'
+  | 'aiGenerate60v3'
+  | 'aiGenerate60Animated'
+  | 'stateNotFound60'
+  | 'stateNodata60'
+  | 'state3_60'
 
-interface IconProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof iconVariants> {
-  name: IconName;
+interface IconProps
+  extends Omit<React.SVGProps<SVGSVGElement>, 'color'>,
+    VariantProps<typeof iconVariants> {
+  name: IconName
+  color?: string
+  hoverColor?: string
 }
 
-const Icon = ({ name, size, className, ...props }: IconProps) => {
+const stroke = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+}
+
+type ResolvedIconSize = '16' | '24' | '32' | '60'
+
+const isIcon24RawName = (name: IconName): name is Icon24RawName => {
+  return Object.prototype.hasOwnProperty.call(ICON24_RAW_MAP, name)
+}
+
+const isIcon32RawName = (name: IconName): name is Icon32RawName => {
+  return Object.prototype.hasOwnProperty.call(ICON32_RAW_MAP, name)
+}
+
+const isIcon60RawName = (name: IconName): name is Icon60RawName => {
+  return Object.prototype.hasOwnProperty.call(ICON60_RAW_MAP, name)
+}
+
+const getResolvedSize = (size: IconProps['size']): ResolvedIconSize => {
+  const raw = size == null ? '24' : String(size)
+  if (raw === '16') return '16'
+  if (raw === '32') return '32'
+  if (raw === '60') return '60'
+  return '24'
+}
+
+const scopeSvgBody = (body: string, scope: string): string => {
+  const ids = Array.from(body.matchAll(/id="([^"]+)"/g)).map((m) => m[1])
+  if (!ids.length) return body
+
+  let scoped = body
+  ids.forEach((id) => {
+    const next = `${scope}-${id}`
+    scoped = scoped.split(`id="${id}"`).join(`id="${next}"`)
+    scoped = scoped.split(`url(#${id})`).join(`url(#${next})`)
+    scoped = scoped.split(`href="#${id}"`).join(`href="#${next}"`)
+    scoped = scoped.split(`xlink:href="#${id}"`).join(`xlink:href="#${next}"`)
+  })
+
+  return scoped
+}
+
+const getViewBox = (name: IconName, size: ResolvedIconSize): string => {
+  if (name === 'closeCircleFill') {
+    return '0 0 16 16'
+  }
+
+  if (size === '60' && isIcon60RawName(name)) {
+    return ICON60_RAW_MAP[name].viewBox
+  }
+
+  if (size === '32' && isIcon32RawName(name)) {
+    return ICON32_RAW_MAP[name].viewBox
+  }
+
+  if (isIcon24RawName(name)) {
+    return ICON24_RAW_MAP[name].viewBox
+  }
+
+  if (name === 'aiGenerate60Animated' || name === 'stateNotFound60' || name === 'stateNodata60' || name === 'state3_60') {
+    return '0 0 60 60'
+  }
+
+  return '0 0 24 24'
+}
+
+const Icon = ({
+  name,
+  size,
+  className,
+  color = 'currentColor',
+  hoverColor = 'currentColor',
+  style,
+  ...props
+}: IconProps) => {
+  const iconStyle = {
+    ...style,
+    '--icon-color': color,
+    '--icon-hover-color': hoverColor,
+  } as React.CSSProperties
+  const resolvedSize = getResolvedSize(size)
+  const scopeId = React.useId().replace(/[:]/g, '')
+
   return (
     <svg
-      className={cn(iconVariants({ size, className }))}
+      className={cn(
+        iconVariants({ size }),
+        'text-[var(--icon-color)] transition-colors duration-150 group-hover:text-[var(--icon-hover-color)]',
+        className
+      )}
+      viewBox={getViewBox(name, resolvedSize)}
       fill="none"
-      stroke="currentColor" // 일반 아이콘은 currentColor 사용
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      viewBox="0 0 24 24" // 기본 viewBox, 크기에 따라 내부에서 조정 가능
+      aria-hidden="true"
+      focusable="false"
+      style={iconStyle}
       {...props}
     >
-      {/* 3. 아이콘 이름에 따른 경로 매핑 */}
-      {renderPath(name)}
+      {renderIcon(name, resolvedSize, scopeId)}
     </svg>
-  );
-};
+  )
+}
 
-// 4. 경로 렌더링 함수 (피그마에서 SVG 코드를 복사해 넣으세요)
-const renderPath = (name: IconName) => {
+const renderIcon = (name: IconName, size: ResolvedIconSize, scopeId: string): React.ReactNode => {
+  if (size === '60' && isIcon60RawName(name)) {
+    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON60_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
+  }
+
+  if (size === '32' && isIcon32RawName(name)) {
+    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON32_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
+  }
+
+  if (isIcon24RawName(name)) {
+    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON24_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
+  }
+
   switch (name) {
-    case "plus":
-      return <path d="M12 5v14M5 12h14" />;
-    case "home":
-      return <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />;
-    
-    // 그라데이션이 필요한 특수 아이콘 (icon60)
-    case "file-star":
+    case 'closeCircleFill':
+      return (
+        <>
+          <path d="M0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8Z" fill="currentColor" />
+          <path d="M4.26732 12.6666L3.33398 11.7333L7.06732 7.99998L3.33398 4.26665L4.26732 3.33331L8.00065 7.06665L11.734 3.33331L12.6673 4.26665L8.93398 7.99998L12.6673 11.7333L11.734 12.6666L8.00065 8.93331L4.26732 12.6666Z" fill="white" />
+        </>
+      )
+    case 'aiGenerate60Animated': {
+      const maskId = `${scopeId}-ai60-mask`
+      const flowGradientId = `${scopeId}-ai60-flow-grad`
+      const glowGradientId = `${scopeId}-ai60-glow-grad`
+
       return (
         <>
           <defs>
-            <linearGradient id="grad-file" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#7B61FF" />
-              <stop offset="100%" stopColor="#E539B4" />
+            <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="60" height="60">
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M13.7885 41.3143L16.0513 34.5258H18.8974L21.1602 41.3143L27.9487 43.5771V46.4232L21.1602 48.686L18.8974 55.4745H16.0513L13.7885 48.686L7 46.4232V43.5771L13.7885 41.3143Z"
+                fill="white"
+              />
+              <path
+                d="M33.2364 5.00015C33.0809 4.99992 32.9218 5 32.7585 5.00008L32.5199 5.00015H33.2364Z"
+                fill="white"
+              />
+              <path
+                d="M32.4743 5.00016L26.8711 5.00016C24.8587 5.00012 23.1978 5.0001 21.8448 5.11064C20.4395 5.22545 19.1478 5.47187 17.9344 6.09009C16.0528 7.04883 14.523 8.57863 13.5643 10.4603C12.9461 11.6736 12.6996 12.9654 12.5848 14.3706C12.4743 15.7236 12.4743 17.3845 12.4743 19.3969V30.0002H21.2243L23.7243 37.5002L32.4743 40.0002V50.0002H38.0777C40.0901 50.0002 41.7509 50.0002 43.1039 49.8897C44.5092 49.7749 45.8009 49.5285 47.0143 48.9102C48.8959 47.9515 50.4257 46.4217 51.3844 44.5401C52.0026 43.3267 52.2491 42.035 52.3639 40.6297C52.4744 39.2767 52.4744 37.6159 52.4743 35.6035V25.0002H34.9743C33.5936 25.0002 32.4743 23.8809 32.4743 22.5002V5.00016Z"
+                fill="white"
+              />
+              <path
+                d="M52.4743 24.9707L52.4744 24.716C52.4745 24.5515 52.4746 24.3912 52.4743 24.2347V24.9707Z"
+                fill="white"
+              />
+              <path
+                d="M51.9796 20.0002C51.7374 19.2591 51.409 18.5481 51.0007 17.8818C50.3792 16.8675 49.5306 16.0197 48.4076 14.8977L42.5768 9.06698C41.4548 7.9439 40.607 7.09533 39.5927 6.47376C38.9264 6.06545 38.2154 5.73714 37.4743 5.49495V20.0002H51.9796Z"
+                fill="white"
+              />
+            </mask>
+
+            <linearGradient id={flowGradientId} x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#687AE6" />
+              <stop offset="18%" stopColor="#9CA8FF" />
+              <stop offset="36%" stopColor="#D867BF" />
+              <stop offset="54%" stopColor="#7B8AF0" />
+              <stop offset="72%" stopColor="#D867BF" />
+              <stop offset="90%" stopColor="#9CA8FF" />
+              <stop offset="100%" stopColor="#687AE6" />
+            </linearGradient>
+
+            <linearGradient id={glowGradientId} x1="-40" y1="110" x2="110" y2="-40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+              <stop offset="40%" stopColor="rgba(255,255,255,0.08)" />
+              <stop offset="50%" stopColor="rgba(255,255,255,0.36)" />
+              <stop offset="60%" stopColor="rgba(255,255,255,0.08)" />
+              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
             </linearGradient>
           </defs>
-          <path d="..." fill="url(#grad-file)" stroke="none" />
-        </>
-      );
-    default:
-      return null;
-  }
-};
 
-export { Icon };
+          <g mask={`url(#${maskId})`} className="origin-center [animation:icon60AISoftFloat_7s_ease-in-out_infinite]">
+            <g transform="rotate(-28 30 30)" className="[animation:icon60FlowTile_3.6s_linear_infinite]">
+              <rect x="-260" y="-180" width="260" height="420" fill={`url(#${flowGradientId})`} />
+              <rect x="0" y="-180" width="260" height="420" fill={`url(#${flowGradientId})`} />
+            </g>
+            <g transform="rotate(-28 30 30)" className="[animation:icon60FlowTileSlow_6.4s_linear_infinite]">
+              <rect x="-260" y="-180" width="260" height="420" fill={`url(#${glowGradientId})`} opacity="0.6" />
+              <rect x="0" y="-180" width="260" height="420" fill={`url(#${glowGradientId})`} opacity="0.6" />
+            </g>
+          </g>
+        </>
+      )
+    }
+    case 'stateNotFound60':
+      return (
+        <>
+          <image
+            href="https://www.figma.com/api/mcp/asset/dc84270f-9ea4-490e-8a35-689485d77cfc"
+            x="7.5"
+            y="10"
+            width="45"
+            height="46.34"
+            preserveAspectRatio="xMidYMid meet"
+          />
+        </>
+      )
+    case 'stateNodata60':
+      return (
+        <>
+          <image
+            href="https://www.figma.com/api/mcp/asset/cfffa95d-a0ee-40c5-8c94-0e3e1ca63d30"
+            x="10"
+            y="5"
+            width="40"
+            height="50"
+            preserveAspectRatio="xMidYMid meet"
+          />
+          <image
+            href="https://www.figma.com/api/mcp/asset/4f3e7379-2e33-4c36-9830-ef2298b8957c"
+            x="21"
+            y="28"
+            width="19"
+            height="19"
+            preserveAspectRatio="xMidYMid meet"
+          />
+          <image
+            href="https://www.figma.com/api/mcp/asset/8087e717-46c9-47e9-a6c9-e4e448829f1f"
+            x="21"
+            y="28"
+            width="19"
+            height="19"
+            preserveAspectRatio="xMidYMid meet"
+          />
+        </>
+      )
+    case 'state3_60':
+      return (
+        <>
+          <image
+            href="https://www.figma.com/api/mcp/asset/ee10b2b2-b653-49a3-a247-66ea7b696e96"
+            x="10"
+            y="8"
+            width="40"
+            height="45"
+            preserveAspectRatio="xMidYMid meet"
+          />
+        </>
+      )
+    default:
+      return null
+  }
+}
+
+export { Icon }
