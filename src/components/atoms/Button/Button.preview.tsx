@@ -1,5 +1,5 @@
-import { Button } from '@/components/atoms/Button'
-import { Icon } from '@/components/atoms/Icon'
+import { Button } from '@/components/atoms/Button/Button'
+import { Icon } from '@/components/atoms/Icon/Icon'
 
 function VariantBlock({
   title,

@@ -24,12 +24,10 @@
 src/
   assets/
     icons/
-      raw24/                  # 24px 아이콘 원본 SVG
-      raw32/                  # 32px 아이콘 원본 SVG
-      raw60/                  # 60px 아이콘 원본 SVG
+      raw/                    # 단일 아이콘 원본 SVG 저장소
   components/
     atoms/                    # 단일 책임의 최소 UI 단위 (Button, Icon, Input, Badge 등)
-                             # 파일 예시: Button.tsx, Icon.tsx, icon24Raw.ts
+                             # 파일 예시: Button.tsx, Icon.tsx, iconRaw.ts
     molecules/                # atoms 2개 이상을 조합한 입력/표시 단위
                              # 파일 예시: SearchField.tsx, LabeledInput.tsx, FilterChipGroup.tsx
     organisms/                # molecules + atoms 조합의 섹션/블록 단위
@@ -118,15 +116,11 @@ src/
 
 ### 7.1 아이콘 원본 자산
 
-- 24px 원본 SVG: `src/assets/icons/raw24`
-- 32px 원본 SVG: `src/assets/icons/raw32`
-- 60px 원본 SVG: `src/assets/icons/raw60`
+- 단일 원본 SVG 저장소: `src/assets/icons/raw`
 
 ### 7.2 아이콘 렌더링 맵
 
-- 24px 아이콘 맵: `src/components/atoms/icon24Raw.ts`
-- 32px 아이콘 맵: `src/components/atoms/icon32Raw.ts`
-- 60px 아이콘 맵: `src/components/atoms/icon60Raw.ts`
+- 단일 아이콘 맵(공식 사용): `src/components/atoms/iconRaw.ts`
 - 공통 아이콘 컴포넌트: `src/components/atoms/Icon.tsx`
 
 ### 7.3 전역 스타일 자산

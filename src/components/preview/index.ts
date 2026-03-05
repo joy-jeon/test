@@ -1,2 +1,2 @@
-export { ButtonPreview } from '@/components/preview/Button.preview'
-export { IconPreview } from '@/components/preview/Icon.preview'
+export { ButtonPreview } from '@/components/atoms/Button/Button.preview'
+export { IconPreview } from '@/components/atoms/Icon/Icon.preview'

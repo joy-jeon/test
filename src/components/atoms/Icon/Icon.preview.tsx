@@ -1,4 +1,4 @@
-import { Icon, type IconName } from '@/components/atoms/Icon'
+import { Icon, type IconName } from '@/components/atoms/Icon/Icon'
 
 const ICON_NAMES: IconName[] = [
   'arrow-left',

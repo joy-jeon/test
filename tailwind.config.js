@@ -74,11 +74,6 @@ module.exports = {
         "B3": "14px",
         "B4": "12px",
       },
-      customProperties: {
-        "Font-Family-LG-EI-Text": "LG EI Text",
-        "Font-Weight-Bold": "Bold",
-        "Font-Weight-Regular": "Regular"
-      },
     }
   },
   plugins: [],

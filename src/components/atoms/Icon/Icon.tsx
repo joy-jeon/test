@@ -1,135 +1,24 @@
 import React from 'react'
-import { cva, type VariantProps } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { clsx, type ClassValue } from 'clsx'
-import { ICON24_RAW_MAP, type Icon24RawName } from '@/components/atoms/icon24Raw'
-import { ICON32_RAW_MAP, type Icon32RawName } from '@/components/atoms/icon32Raw'
-import { ICON60_RAW_MAP, type Icon60RawName } from '@/components/atoms/icon60Raw'
+import { ICON_RAW_MAP, type IconRawName } from './iconRaw'
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
-const iconVariants = cva('inline-block shrink-0', {
-  variants: {
-    size: {
-      16: 'w-[16px] h-[16px]', // 예외) input 안의 기능
-      24: 'w-[24px] h-[24px]',
-      32: 'w-[32px] h-[32px]',
-      48: 'w-[48px] h-[48px]', // 예외) 과제 생성 size Lg
-      60: 'w-[60px] h-[60px]',
-    },
-  },
-  defaultVariants: {
-    size: 24,
-  },
-})
+export type IconName = IconRawName | 'closeCircleFill' | 'aiGenerate60Animated'
 
-export type IconName =
-  | 'arrow-left1'
-  | 'arrow-left'
-  | 'arrow-right'
-  | 'arrow-up'
-  | 'arrow-down'
-  | 'arrow1-left'
-  | 'arrow1-right'
-  | 'arrow1-up'
-  | 'arrow1-down'
-  | 'plus'
-  | 'minus'
-  | 'close'
-  | 'closeCircleFill'
-  | 'checkSmall'
-  | 'sClose'
-  | 'fileDown'
-  | 'fileDownUpload'
-  | 'clip'
-  | 'search'
-  | 'setting'
-  | 'lock'
-  | 'unlock'
-  | 'calendar'
-  | 'delete'
-  | 'openNew'
-  | 'info'
-  | 'infoFill'
-  | 'c'
-  | 'attention'
-  | 'attentionFill'
-  | 'question'
-  | 'time'
-  | 'home'
-  | 'man'
-  | 'man1'
-  | 'copy'
-  | 'closeCircle'
-  | 'siren'
-  | 'ai'
-  | 'doc'
-  | 'addPhoto'
-  | 'building'
-  | 'chartLine'
-  | 'chartPie'
-  | 'next'
-  | 'ok'
-  | 'aiPen'
-  | 'aiSquare'
-  | 'aiGenerate'
-  | 'image'
-  | 'aiCamera'
-  | 'magicEraser'
-  | 'folder'
-  | 'folderUP'
-  | 'message'
-  | 'share'
-  | 'hourglass'
-  | 'fileFailed'
-  | 'filter'
-  | 'rowMove'
-  | 'menu'
-  | 'aiGenerate60v1'
-  | 'aiGenerate60v2'
-  | 'aiGenerate60v3'
-  | 'aiGenerate60Animated'
-  | 'stateNotFound60'
-  | 'stateNodata60'
-  | 'state3_60'
-
-interface IconProps
-  extends Omit<React.SVGProps<SVGSVGElement>, 'color'>,
-    VariantProps<typeof iconVariants> {
+interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, 'color'> {
   name: IconName
+  size?: number
   color?: string
   hoverColor?: string
 }
 
-const stroke = {
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 2,
-  strokeLinecap: 'round' as const,
-  strokeLinejoin: 'round' as const,
-}
-
-type ResolvedIconSize = '16' | '24' | '32' | '60'
 const ICON_60_STATE_SET = new Set<IconName>(['stateNotFound60', 'stateNodata60', 'state3_60'])
+const DEFAULT_ICON_SIZE = 24
 
-const isIcon24RawName = (name: IconName): name is Icon24RawName => {
-  return Object.prototype.hasOwnProperty.call(ICON24_RAW_MAP, name)
-}
-
-const isIcon32RawName = (name: IconName): name is Icon32RawName => {
-  return Object.prototype.hasOwnProperty.call(ICON32_RAW_MAP, name)
-}
-
-const isIcon60RawName = (name: IconName): name is Icon60RawName => {
-  return Object.prototype.hasOwnProperty.call(ICON60_RAW_MAP, name)
-}
-
-const getResolvedSize = (size: IconProps['size']): ResolvedIconSize => {
-  const raw = size == null ? '24' : String(size)
-  if (raw === '16') return '16'
-  if (raw === '32') return '32'
-  if (raw === '60') return '60'
-  return '24'
+const isIconRawName = (name: IconName): name is IconRawName => {
+  return Object.prototype.hasOwnProperty.call(ICON_RAW_MAP, name)
 }
 
 const scopeSvgBody = (body: string, scope: string): string => {
@@ -148,25 +37,17 @@ const scopeSvgBody = (body: string, scope: string): string => {
   return scoped
 }
 
-const getViewBox = (name: IconName, size: ResolvedIconSize): string => {
+const getViewBox = (name: IconName): string => {
   if (name === 'closeCircleFill') {
     return '0 0 16 16'
   }
 
-  if (size === '60' && isIcon60RawName(name)) {
-    return ICON60_RAW_MAP[name].viewBox
-  }
-
-  if (size === '32' && isIcon32RawName(name)) {
-    return ICON32_RAW_MAP[name].viewBox
-  }
-
-  if (isIcon24RawName(name)) {
-    return ICON24_RAW_MAP[name].viewBox
-  }
-
   if (name === 'aiGenerate60Animated') {
     return '0 0 60 60'
+  }
+
+  if (isIconRawName(name)) {
+    return ICON_RAW_MAP[name].viewBox
   }
 
   return '0 0 24 24'
@@ -182,46 +63,40 @@ const Icon = ({
   ...props
 }: IconProps) => {
   const isState60Icon = ICON_60_STATE_SET.has(name)
+  const resolvedSize = size ?? DEFAULT_ICON_SIZE
   const resolvedColor = color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor')
   const resolvedHoverColor = hoverColor ?? resolvedColor
   const iconStyle = {
     ...style,
+    width: resolvedSize,
+    height: resolvedSize,
     '--icon-color': resolvedColor,
     '--icon-hover-color': resolvedHoverColor,
   } as React.CSSProperties
-  const resolvedSize = getResolvedSize(size)
   const scopeId = React.useId().replace(/[:]/g, '')
 
   return (
     <svg
       className={cn(
-        iconVariants({ size }),
+        'inline-block shrink-0',
         'text-[var(--icon-color)] transition-colors duration-150 group-hover:text-[var(--icon-hover-color)]',
         className
       )}
-      viewBox={getViewBox(name, resolvedSize)}
+      viewBox={getViewBox(name)}
       fill="none"
       aria-hidden="true"
       focusable="false"
       style={iconStyle}
       {...props}
     >
-      {renderIcon(name, resolvedSize, scopeId)}
+      {renderIcon(name, scopeId)}
     </svg>
   )
 }
 
-const renderIcon = (name: IconName, size: ResolvedIconSize, scopeId: string): React.ReactNode => {
-  if (size === '60' && isIcon60RawName(name)) {
-    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON60_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
-  }
-
-  if (size === '32' && isIcon32RawName(name)) {
-    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON32_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
-  }
-
-  if (isIcon24RawName(name)) {
-    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON24_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
+const renderIcon = (name: IconName, scopeId: string): React.ReactNode => {
+  if (isIconRawName(name)) {
+    return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
   }
 
   switch (name) {
