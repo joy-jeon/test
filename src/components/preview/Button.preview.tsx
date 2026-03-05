@@ -40,7 +40,7 @@ export function ButtonPreview() {
 
       <div className="mt-6 space-y-4">
         <VariantBlock
-          title="Primary Solid"
+          title="Primary Solid (H32)"
           able={
             <>
               <Button variant="primarySolid">primarySolid</Button>
@@ -62,7 +62,7 @@ export function ButtonPreview() {
         />
 
         <VariantBlock
-          title="Primary Line"
+          title="Primary Line (H32)"
           able={
             <>
               <Button variant="primaryLine">primaryLine</Button>
@@ -84,7 +84,7 @@ export function ButtonPreview() {
         />
 
         <VariantBlock
-          title="Secondary"
+          title="Secondary Solid (H40)"
           able={
             <>
               <Button variant="secondarySolid" size="md">
@@ -101,6 +101,30 @@ export function ButtonPreview() {
                 secondarySolid
               </Button>
               <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size={24} />} disabled>
+              secondarySolid
+              </Button>
+            </>
+          }
+        />
+
+        <VariantBlock
+          title="Secondary Line (H40)"
+          able={
+            <>
+              <Button variant="secondaryLine" size="md">
+                secondaryLine
+              </Button>
+              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size={24} />}>
+                secondaryLine
+              </Button>
+            </>
+          }
+          disabled={
+            <>
+              <Button variant="secondaryLine" size="md" disabled>
+                secondaryLine
+              </Button>
+              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size={24} />} disabled>
                 secondaryLine
               </Button>
             </>
@@ -114,10 +138,13 @@ export function ButtonPreview() {
               <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size={24} />}>
                 과제생성
               </Button>
-              <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size={32} />}>
+              <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size={24} />}>
                 과제생성
               </Button>
-              <Button variant="generate" size="generateLg" leftIcon={<Icon name="ai" size={48} />}>
+              <Button variant="generate" size="generateLg" leftIcon={<Icon name="ai" size={32} />}>
+                과제생성
+              </Button>
+              <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size={48} />}>
                 과제생성
               </Button>
             </>

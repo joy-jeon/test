@@ -139,7 +139,7 @@ export function IconPreview() {
               key={`60-${name}`}
               className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
             >
-              <div className="flex h-20 items-center justify-center text-Icon-Gray">
+              <div className="flex h-20 items-center justify-center text-Icon-Gray-State">
                 <Icon name={name} size={60} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -159,7 +159,7 @@ export function IconPreview() {
               className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
             >
               <div className="flex h-20 items-center justify-center text-Icon-Gray">
-                <Icon name={name} size={60} />
+                <Icon name={name} size={60} color="theme(colors.Icon-Gray-State)" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
                 {String(index + 1).padStart(2, '0')}. {name}

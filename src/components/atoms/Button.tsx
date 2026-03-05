@@ -11,7 +11,7 @@ const BUTTON_BASE = cv(
   "inline-flex",
   "items-center",
   "justify-center",
-  "gap-2",
+  "gap-[6px]",
   "truncate",
   "font-bold",
   "transition-colors",
@@ -48,7 +48,7 @@ const VARIANT_CLASSES = {
   ),
   secondarySolid: cv(
     "min-w-[78px]",
-    "rounded-[16px]",
+    "rounded-[8px]",
     "bg-Primary",
     "text-White",
     "hover:bg-Btn-Purple-Hover",
@@ -57,14 +57,17 @@ const VARIANT_CLASSES = {
   ),
   secondaryLine: cv(
     "min-w-[78px]",
-    "rounded-[16px]",
+    "rounded-[8px]",
+    "border",
+    "border-Btn-Line",
+    "bg-White",
     "text-T-Title",
-    "hover:from-Ani3",
-    "hover:to-Ani2",
-    "focus-visible:from-Btn-Purple",
-    "focus-visible:to-Ani2",
-    "active:from-Btn-Purple",
-    "active:to-Ani2",
+    "hover:bg-Btn-White-Hover",
+    "hover:border-Btn-Line-Focus",
+    "focus-visible:bg-White",
+    "focus-visible:border-Btn-Line-Focus",
+    "active:bg-White",
+    "active:border-Btn-Line-Focus",
     "disabled:bg-Btn-Disable",
     "disabled:text-T-Disabled"
   ),
@@ -126,12 +129,13 @@ const VARIANT_CLASSES = {
 
 const SIZE_CLASSES = {
   sm: "h-[32px] px-[12px] text-[length:theme(fontSize.B4)]",
-  md: "h-[40px] px-[16px] text-[length:theme(fontSize.B3)]",
+  md: "h-[40px] px-[24px] text-[length:theme(fontSize.B1)]",
   iconSm: "h-[16px] rounded-0 px-0",
   iconMd: "h-[32px] rounded-[8px] px-[4px]",
   generateSm: "h-[32px] rounded-[8px] px-[12px] text-[length:theme(fontSize.B2)]",
-  generateMd: "h-[60px] rounded-[16px] px-[24px] text-[length:theme(fontSize.H3)]",
-  generateLg: "h-[80px] rounded-[999px] px-[60px] text-[length:theme(fontSize.H1)]",
+  generateMd: "h-[40px] rounded-[8px] px-[12px] text-[length:theme(fontSize.B1)]",
+  generateLg: "h-[60px] rounded-[16px] px-[24px] text-[length:theme(fontSize.H3)]",
+  generateXlg: "h-[80px] rounded-[999px] px-[60px] text-[length:theme(fontSize.H1)]",
 } as const;
 
 const ICON_SLOT_CLASS = cv(

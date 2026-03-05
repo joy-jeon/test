@@ -21,6 +21,7 @@ module.exports = {
         "Primary": "#687AE6FF",
         "White": "#FFFFFFFF",
         "Icon-Gray": "#74818CFF",
+        "Icon-Gray-State": "#C4CCD3FF",
         "Icon-Gray-Hover": "#212121FF",
         "Icon-Gray-Disable": "#A5A5A5FF",
         "Black": "#000000FF",

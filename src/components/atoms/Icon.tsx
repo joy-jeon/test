@@ -110,6 +110,7 @@ const stroke = {
 }
 
 type ResolvedIconSize = '16' | '24' | '32' | '60'
+const ICON_60_STATE_SET = new Set<IconName>(['stateNotFound60', 'stateNodata60', 'state3_60'])
 
 const isIcon24RawName = (name: IconName): name is Icon24RawName => {
   return Object.prototype.hasOwnProperty.call(ICON24_RAW_MAP, name)
@@ -164,7 +165,7 @@ const getViewBox = (name: IconName, size: ResolvedIconSize): string => {
     return ICON24_RAW_MAP[name].viewBox
   }
 
-  if (name === 'aiGenerate60Animated' || name === 'stateNotFound60' || name === 'stateNodata60' || name === 'state3_60') {
+  if (name === 'aiGenerate60Animated') {
     return '0 0 60 60'
   }
 
@@ -175,15 +176,18 @@ const Icon = ({
   name,
   size,
   className,
-  color = 'currentColor',
-  hoverColor = 'currentColor',
+  color,
+  hoverColor,
   style,
   ...props
 }: IconProps) => {
+  const isState60Icon = ICON_60_STATE_SET.has(name)
+  const resolvedColor = color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor')
+  const resolvedHoverColor = hoverColor ?? resolvedColor
   const iconStyle = {
     ...style,
-    '--icon-color': color,
-    '--icon-hover-color': hoverColor,
+    '--icon-color': resolvedColor,
+    '--icon-hover-color': resolvedHoverColor,
   } as React.CSSProperties
   const resolvedSize = getResolvedSize(size)
   const scopeId = React.useId().replace(/[:]/g, '')
@@ -293,61 +297,6 @@ const renderIcon = (name: IconName, size: ResolvedIconSize, scopeId: string): Re
         </>
       )
     }
-    case 'stateNotFound60':
-      return (
-        <>
-          <image
-            href="https://www.figma.com/api/mcp/asset/dc84270f-9ea4-490e-8a35-689485d77cfc"
-            x="7.5"
-            y="10"
-            width="45"
-            height="46.34"
-            preserveAspectRatio="xMidYMid meet"
-          />
-        </>
-      )
-    case 'stateNodata60':
-      return (
-        <>
-          <image
-            href="https://www.figma.com/api/mcp/asset/cfffa95d-a0ee-40c5-8c94-0e3e1ca63d30"
-            x="10"
-            y="5"
-            width="40"
-            height="50"
-            preserveAspectRatio="xMidYMid meet"
-          />
-          <image
-            href="https://www.figma.com/api/mcp/asset/4f3e7379-2e33-4c36-9830-ef2298b8957c"
-            x="21"
-            y="28"
-            width="19"
-            height="19"
-            preserveAspectRatio="xMidYMid meet"
-          />
-          <image
-            href="https://www.figma.com/api/mcp/asset/8087e717-46c9-47e9-a6c9-e4e448829f1f"
-            x="21"
-            y="28"
-            width="19"
-            height="19"
-            preserveAspectRatio="xMidYMid meet"
-          />
-        </>
-      )
-    case 'state3_60':
-      return (
-        <>
-          <image
-            href="https://www.figma.com/api/mcp/asset/ee10b2b2-b653-49a3-a247-66ea7b696e96"
-            x="10"
-            y="8"
-            width="40"
-            height="45"
-            preserveAspectRatio="xMidYMid meet"
-          />
-        </>
-      )
     default:
       return null
   }
