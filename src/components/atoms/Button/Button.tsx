@@ -106,6 +106,8 @@ const VARIANT_CLASSES = {
     "text-Icon-Gray",
     "hover:bg-Btn-White-Hover",
     "hover:border-Btn-Line-Focus",
+    "group-hover:text-Icon-Gray-Hover",
+    "group-active:text-Icon-Gray-Hover",
     "focus-visible:bg-White",
     "focus-visible:border-Btn-Line-Focus",
     "active:bg-White",
@@ -142,50 +144,28 @@ const ICON_SLOT_CLASS = cv(
   "shrink-0",
   "flex",
   "items-center",
-  "text-[var(--button-icon-color)]",
+  "text-inherit",
   "transition-colors",
-  "duration-150",
-  "group-hover:text-[var(--button-icon-hover-color)]",
-  "group-active:text-[var(--button-icon-active-color)]"
+  "duration-150"
 );
 
-const buttonVariants = cva(
-  BUTTON_BASE,
-  {
-    variants: {
-      variant: VARIANT_CLASSES,
-      size: SIZE_CLASSES,
-    },
-    defaultVariants: {
-      variant: "primarySolid",
-      size: "sm",
-    },
-  }
-);
+const buttonVariants = cva(BUTTON_BASE, {
+  variants: {
+    variant: VARIANT_CLASSES,
+    size: SIZE_CLASSES,
+  },
+  defaultVariants: {
+    variant: "primarySolid",
+    size: "sm",
+  },
+});
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
-  iconColor?: string;
-  iconHoverColor?: string;
-  iconActiveColor?: string;
 }
-
-const variantIconColorPreset: Record<
-  NonNullable<ButtonProps["variant"]>,
-  { base: string; hover: string; active: string }
-> = {
-  primarySolid: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  primaryLine: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  secondarySolid: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  secondaryLine: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  icon: { base: "#74818C", hover: "#212121", active: "#212121" },
-  iconSolid: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  iconLine: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-  generate: { base: "currentColor", hover: "currentColor", active: "currentColor" },
-};
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
@@ -196,34 +176,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       children,
-      iconColor,
-      iconHoverColor,
-      iconActiveColor,
       style,
       ...props
     },
     ref
   ) => {
-    const resolvedVariant = variant ?? "primarySolid";
-    const preset = variantIconColorPreset[resolvedVariant];
-    const resolvedIconColor = iconColor ?? preset.base;
-    const resolvedIconHoverColor = iconHoverColor ?? preset.hover;
-    const resolvedIconActiveColor = iconActiveColor ?? preset.active;
     const isChildrenIconOnly =
       !leftIcon && !rightIcon && React.isValidElement(children);
-
-    const iconStyle = {
-      ...style,
-      "--button-icon-color": resolvedIconColor,
-      "--button-icon-hover-color": resolvedIconHoverColor,
-      "--button-icon-active-color": resolvedIconActiveColor,
-    } as React.CSSProperties;
 
     return (
       <button
         ref={ref}
         className={cn(buttonVariants({ variant, size, className }))}
-        style={iconStyle}
+        style={style}
         {...props}
       >
         {leftIcon && (

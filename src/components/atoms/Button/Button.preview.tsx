@@ -160,17 +160,20 @@ export function ButtonPreview() {
 
         <VariantBlock
           title="Icon Variants"
-          description="input reset 같은 아이콘 전용 버튼 확인"
+          description="아이콘 단독 사용 시 tone으로 white/gray 선택. 버튼 안에서는 버튼 text 색을 상속."
           able={
             <>
               <Button variant="iconSolid" aria-label="검색">
                 <Icon name="search" size={24} />
               </Button>
+              
               <Button variant="iconLine" aria-label="설정">
                 <Icon name="plus" size={24} />
               </Button>
-              <Button variant="icon" aria-label="초기화">
-                <Icon name="closeCircleFill" size={16} />
+              
+             
+              <Button variant="icon" aria-label="초기화 gray">
+                <Icon name="closeCircleFill" size={16} tone="gray" />
               </Button>
             </>
           }

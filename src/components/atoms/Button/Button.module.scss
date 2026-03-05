@@ -1,16 +1,13 @@
-.wrap {
+.buttonWrap {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   width: fit-content;
+
+
 }
 
-.wrapFull {
-  display: flex;
-  width: 100%;
-}
 
 .wrapCenter {
   justify-content: center;
 }
-

@@ -1,13 +1,26 @@
 import React from 'react'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { clsx, type ClassValue } from 'clsx'
 import { ICON_RAW_MAP, type IconRawName } from './iconRaw'
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
+const iconToneVariants = cva('', {
+  variants: {
+    tone: {
+      white: 'text-White',
+      gray:
+        'text-Icon-Gray group-hover:text-Icon-Gray-Hover group-active:text-Icon-Gray-Hover',
+    },
+  },
+})
+
 export type IconName = IconRawName | 'closeCircleFill' | 'aiGenerate60Animated'
 
-interface IconProps extends Omit<React.SVGProps<SVGSVGElement>, 'color'> {
+interface IconProps
+  extends Omit<React.SVGProps<SVGSVGElement>, 'color'>,
+    VariantProps<typeof iconToneVariants> {
   name: IconName
   size?: number
   color?: string
@@ -57,6 +70,7 @@ const Icon = ({
   name,
   size,
   className,
+  tone,
   color,
   hoverColor,
   style,
@@ -64,22 +78,31 @@ const Icon = ({
 }: IconProps) => {
   const isState60Icon = ICON_60_STATE_SET.has(name)
   const resolvedSize = size ?? DEFAULT_ICON_SIZE
+  const useTone = tone != null
   const resolvedColor = color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor')
   const resolvedHoverColor = hoverColor ?? resolvedColor
   const iconStyle = {
     ...style,
     width: resolvedSize,
     height: resolvedSize,
-    '--icon-color': resolvedColor,
-    '--icon-hover-color': resolvedHoverColor,
+    ...(useTone
+      ? {}
+      : {
+          '--icon-color': resolvedColor,
+          '--icon-hover-color': resolvedHoverColor,
+        }),
   } as React.CSSProperties
   const scopeId = React.useId().replace(/[:]/g, '')
 
   return (
     <svg
+      suppressHydrationWarning
       className={cn(
         'inline-block shrink-0',
-        'text-[var(--icon-color)] transition-colors duration-150 group-hover:text-[var(--icon-hover-color)]',
+        'transition-colors duration-150',
+        useTone
+          ? iconToneVariants({ tone })
+          : 'text-[var(--icon-color)] group-hover:text-[var(--icon-hover-color)]',
         className
       )}
       viewBox={getViewBox(name)}

@@ -129,7 +129,30 @@ export function IconPreview() {
         </div>
       </section>
 
+      <section className="mt-8">
+        <h3 className="text-base font-semibold text-slate-800">Icon Color Usage</h3>
+        <p className="mt-1 text-xs text-slate-600">
+          wrapper의 텍스트 컬러(Tailwind 변수) 또는 Icon의 tone으로 색상 제어
+        </p>
 
+        <div className="mt-3 grid gap-4 md:grid-cols-2">
+          
+
+          <div className="rounded-lg border border-slate-200 bg-white p-4">
+            <p className="text-xs font-medium text-slate-700">Icon tone prop (white / gray)</p>
+            <div className="mt-3 flex items-center gap-4">
+              <div className="flex items-center gap-2 rounded-md bg-Icon-Gray px-3 py-2 text-White">
+                <Icon name="plus" size={24} tone="white" />
+                <span className="text-xs text-slate-100">tone="white"</span>
+              </div>
+              <div className="flex items-center gap-2 rounded-md bg-White px-3 py-2">
+                <Icon name="plus" size={24} tone="gray" />
+                <span className="text-xs text-slate-700">tone="gray"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon 60 (Animation)</h3>
@@ -159,7 +182,7 @@ export function IconPreview() {
               className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
             >
               <div className="flex h-20 items-center justify-center text-Icon-Gray">
-                <Icon name={name} size={60} color="theme(colors.Icon-Gray-State)" />
+                <Icon name={name} size={60} tone="gray" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
                 {String(index + 1).padStart(2, '0')}. {name}
