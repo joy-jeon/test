@@ -1,19 +1,21 @@
 import type { NextPage } from 'next'
 
 // *** ATOMS PRIEVIEW
-// import { AtomsPreview } from '@/components/atoms'
+// ****************************************************************
+import { AtomsPreview } from '@/components/atoms'
 
-// const Home: NextPage = () => {
-//   return <AtomsPreview />
-// }
+const Home: NextPage = () => {
+  return <AtomsPreview />
+}
 
-// export default Home
+export default Home
 
 
 
 // *** Molecules PRIEVIEW
-import MoleculesPreview from '@/components/molecules/Molecules.preview';
+// ****************************************************************
+// import MoleculesPreview from '@/components/molecules/Molecules.preview';
 
-export default function MoleculesPreviewPage() {
-  return <MoleculesPreview />;
-}
+// export default function MoleculesPreviewPage() {
+//   return <MoleculesPreview />;
+// }

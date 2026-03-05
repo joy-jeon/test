@@ -19,6 +19,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-family: var(--Font-Family-LG-EI-Text, "LG EI Text");
+  /* font-size: 1rem; 16px */
+  font-style: 'normal'
 }
 
 img,

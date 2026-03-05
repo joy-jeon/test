@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { useMemo, useState } from 'react'
 import { ButtonPreview } from '@/components/atoms/Button/Button.preview'
 import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
+import FontPreview from '@/components/atoms/Font/Font.preview'
+
 
 const LAYOUT = {
   page: 'min-h-screen bg-slate-100 text-slate-900',
@@ -21,12 +23,14 @@ const TAB_STYLE = {
 const TAB_ITEMS = [
   { key: 'button', label: 'Button' },
   { key: 'icon', label: 'Icon' },
+  { key: 'font', label: 'Font' },
 ] as const
 
 export function AtomsPreview() {
   const [activeTab, setActiveTab] = useState<(typeof TAB_ITEMS)[number]['key']>('button')
   const view = useMemo(() => {
     if (activeTab === 'icon') return <IconPreview />
+    if (activeTab === 'font') return <FontPreview />
     return <ButtonPreview />
   }, [activeTab])
 

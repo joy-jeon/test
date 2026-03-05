@@ -56,23 +56,84 @@ module.exports = {
         "Btn-Gray-Focus": "#123658FF",
         "Btn-White-Hover": "#F8F8F8FF",
         "Btn-Tab-Default": "#FFFFFFFF",
-        "Ani1": "#687AE6FF",
-        "Ani2": "#D867BFFF",
-        "Ani3": "#9CA8FFFF"
       },
+    //   // Text 
+    //   "DA-T-Title": "#1A1A1AFF",
+    //   "DA-T-Body": "#444444FF",
+    //   "DA-T-Discription": "#666666FF",
+    //   "DA-T-PlaceHolder": "#99A1AFFF",
+    //   "DA-T-Disabled": "#A5A5A5FF",
+    //   "DA-T-Inverse": "#F3F3F3FF",
+    //   "DA-T-Primary": "#687AE6FF",
+    //   "DA-T-Link": "#FF8C19FF",
+    //   "DA-T-Link-Hover": "#20BE67FF",
+    //   "DA-T-Positive": "#009B98FF",
+    //   "DA-T-Attention": "#FF0000FF",
+
+    //   // Brand & Logo
+    //   "DA-LG-Red1": "#A50034FF",
+    //   "DA-LG-Red2": "#FD312EFF",
+    //   "DA-LG-Red3": "#FF6F6FFF",
+    //   "DA-Primary": "#687AE6FF",
+    //   "DA-Black": "#000000FF",
+    //   "DA-White": "#FFFFFFFF",
+
+    //   // Icons
+    //   "DA-Icon-Gray": "#74818CFF",
+    //   "DA-Icon-Gray-State": "#C4CCD3FF",
+    //   "DA-Icon-Gray-Hover": "#212121FF",
+    //   "DA-Icon-Gray-Disable": "#A5A5A5FF",
+
+    //   // Backgrounds
+    //   "DA-Bg1": "#F8F8F8FF",
+    //   "DA-Bg2": "#F2F3F7FF",
+    //   "DA-Bg3": "#F1F3FFFF",
+    //   "DA-Bg3-Deep": "#E0E5FFFF",
+    //   "DA-Bg4": "#E0E4E8FF",
+    //   "DA-Bg5": "#F1F7FFFF",
+
+    //   // Form & Grid Elements
+    //   "DA-Form-Read-Dis-Bg": "#F4F4F4FF",
+    //   "DA-Form-Essen-Bg": "#FDFFE3FF",
+    //   "DA-Form-Input-Line": "#CCCCCCFF",
+    //   "DA-Form-Input-Line-Focus": "#212121FF",
+    //   "DA-Divider-Content-Line": "#E0E0E0FF",
+    //   "DA-Divider-Top-Content-Line": "#D6D6D6FF",
+    //   "DA-Grid-Top-Line": "#212121FF",
+    //   "DA-Grid-Tr_Line": "#EAEAEAFF",
+    //   "DA-Grid-Header": "#F7F7F7FF",
+    //   "DA-Grid-Odd": "#FAFAFAFF",
+    //   "DA-Grid-Hover": "#FFF6DDFF",
+    //   "DA-Grid-Focus": "#EAFAFFFF",
+    //   "DA-Grid-Edit": "#FFE9A1FF",
+    //   "DA-Grid-Total": "#FEF2E0FF",
+
+    //   // Buttons 
+    //   "DA-Btn-Line": "#AAAAAAFF",
+    //   "DA-Btn-Line-Focus": "#212121FF",
+    //   "DA-Btn-Disable": "#D6DDEAFF",
+    //   "DA-Btn-Purple": "#687AE6FF",
+    //   "DA-Btn-Purple-Hover": "#9DA9F4FF",
+    //   "DA-Btn-Purple-Focus": "#2036BEFF",
+    //   "DA-Btn-Gray": "#4E6C84FF",
+    //   "DA-Btn-Gray-Hover": "#889BACFF",
+    //   "DA-Btn-Gray-Focus": "#123658FF",
+    //   "DA-Btn-White-Hover": "#F8F8F8FF",
+    //   "DA-Btn-Tab-Default": "#FFFFFFFF",
+    // },
       spacing: {
         "Xsm": "6px",
         "Sm": "8px",
         "Md": "24px",
       },
-      fontSize:{
-        "H1": "32px",
-        "H2": "24px",
-        "H3": "20px",
-        "B1": "18px",
-        "B2": "16px",
-        "B3": "14px",
-        "B4": "12px",
+      fontSize: {
+        "DA-H1": ["var(--DA-Font-Size-H1, 2rem)", { lineHeight: "100%", letterSpacing: "-0.64px" }],      /* 32px */
+        "DA-H2": ["var(--DA-Font-Size-H2, 1.5rem)", { lineHeight: "150%", letterSpacing: "-0.48px" }],    /* 24px */
+        "DA-H3": ["var(--DA-Font-Size-H3, 1.25rem)", { lineHeight: "150%", letterSpacing: "-0.4px" }],    /* 20px */
+        "DA-B1": ["var(--DA-Font-Size-B1, 1.125rem)", { lineHeight: "150%", letterSpacing: "-0.36px" }],  /* 18px */
+        "DA-B2": ["var(--DA-Font-Size-B2, 1rem)", { lineHeight: "150%", letterSpacing: "-0.32px" }],      /* 16px */
+        "DA-B3": ["var(--DA-Font-Size-B3, 0.875rem)", { lineHeight: "150%", letterSpacing: "-0.28px" }],  /* 14px */
+        "DA-B4": ["var(--DA-Font-Size-B4, 0.75rem)", { lineHeight: "150%", letterSpacing: "-0.24px" }],   /* 12px */
       },
     }
   },
