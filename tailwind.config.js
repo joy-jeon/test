@@ -40,7 +40,7 @@ module.exports = {
         "Grid-Tr_Line": "#EAEAEAFF",
         "Grid-Header": "#F7F7F7FF",
         "Grid-Odd": "#FAFAFAFF",
-        "Grid-Hover": "#FFF6DDFF",
+        "Grid-Hover": "#EBEBEBFF",
         "Grid-Focus": "#EAFAFFFF",
         "Grid-Edit": "#FFE9A1FF",
         "Grid-Total": "#FEF2E0FF",

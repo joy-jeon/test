@@ -1,10 +1,14 @@
 module.exports = {
   plugins: {
-    'tailwindcss': {}, // 1. 테일윈드가 먼저 클래스를 CSS(px)로 변환
-    'autoprefixer': {},
-    'postcss-pxtorem': { // 2. 만들어진 px를 rem으로 변환
-      rootValue: 16,
+    tailwindcss: {},
+    autoprefixer: {},
+    'postcss-pxtorem': {
+      rootValue: 16, // tailwind.config.js의 기본 font-size 기준
       propList: ['*'],
+      selectorBlackList: [],
+      replace: true,
+      mediaQuery: false,
+      minPixelValue: 0,
     },
   },
 }

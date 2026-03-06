@@ -160,12 +160,23 @@ const buttonVariants = cva(BUTTON_BASE, {
   },
 });
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
+type ButtonVariant = keyof typeof VARIANT_CLASSES;
+
+interface BaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  children?: React.ReactNode;
 }
+
+export type ButtonProps =
+  | (BaseProps & { 
+      variant: "generate"; 
+      leftIcon: React.ReactNode; // 필수(Required)
+      rightIcon?: never;         // 금지(Forbidden)
+    })
+  | (BaseProps & { 
+      variant?: Exclude<ButtonVariant, "generate">; 
+      leftIcon?: React.ReactNode; 
+      rightIcon?: React.ReactNode; 
+    });
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (

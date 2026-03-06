@@ -13,6 +13,9 @@ const iconToneVariants = cva('', {
       gray:
         'text-Icon-Gray group-hover:text-Icon-Gray-Hover group-active:text-Icon-Gray-Hover',
     },
+    // defaultVariants: {
+    //   tone: 'gray',
+    // },
   },
 })
 
@@ -68,9 +71,9 @@ const getViewBox = (name: IconName): string => {
 
 const Icon = ({
   name,
-  size,
+  size = DEFAULT_ICON_SIZE,
   className,
-  tone,
+  tone = "gray",
   color,
   hoverColor,
   style,
