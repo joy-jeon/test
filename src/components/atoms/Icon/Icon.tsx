@@ -73,7 +73,7 @@ const Icon = ({
   name,
   size = DEFAULT_ICON_SIZE,
   className,
-  tone = "gray",
+  tone,
   color,
   hoverColor,
   style,
@@ -81,7 +81,7 @@ const Icon = ({
 }: IconProps) => {
   const isState60Icon = ICON_60_STATE_SET.has(name)
   const resolvedSize = size ?? DEFAULT_ICON_SIZE
-  const useTone = tone != null
+  const useTone = tone !== undefined && tone !== null
   const resolvedColor = color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor')
   const resolvedHoverColor = hoverColor ?? resolvedColor
   const iconStyle = {

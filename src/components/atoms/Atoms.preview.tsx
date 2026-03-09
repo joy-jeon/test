@@ -1,23 +1,20 @@
-import Head from 'next/head'
 import { useMemo, useState } from 'react'
 import { ButtonPreview } from '@/components/atoms/Button/Button.preview'
 import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
 import FontPreview from '@/components/atoms/Font/Font.preview'
 
-
 const LAYOUT = {
-  page: 'min-h-screen bg-slate-100 text-slate-900',
-  main: 'mx-auto w-full max-w-6xl px-6 py-10',
-  content: 'mt-8 flex flex-col gap-4 lg:flex-row',
-  lnb: 'w-full rounded-xl border border-slate-200 bg-white p-3 lg:sticky lg:top-0 lg:w-56 lg:shrink-0 lg:self-start',
+  main: 'mx-auto w-full max-w-6xl',
+  content: 'flex flex-col gap-6 lg:flex-row',
+  lnb: 'w-full rounded-xl border border-gray-200 bg-gray-50 p-3 lg:sticky lg:top-20 lg:w-56 lg:shrink-0 lg:self-start',
   lnbNav: 'space-y-1',
   view: 'min-w-0 flex-1',
 } as const
 
 const TAB_STYLE = {
   base: 'w-full rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors',
-  active: 'bg-slate-900 text-white',
-  inactive: 'text-slate-700 hover:bg-slate-100',
+  active: 'bg-gray-900 text-white',
+  inactive: 'text-gray-700 hover:bg-gray-200',
 } as const
 
 const TAB_ITEMS = [
@@ -28,6 +25,7 @@ const TAB_ITEMS = [
 
 export function AtomsPreview() {
   const [activeTab, setActiveTab] = useState<(typeof TAB_ITEMS)[number]['key']>('button')
+
   const view = useMemo(() => {
     if (activeTab === 'icon') return <IconPreview />
     if (activeTab === 'font') return <FontPreview />
@@ -35,41 +33,32 @@ export function AtomsPreview() {
   }, [activeTab])
 
   return (
-    <div className={LAYOUT.page}>
-      <Head>
-        <title>Atom Component Guide</title>
-        <meta name="description" content="Button and Icon preview" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div className={LAYOUT.main}>
+      <header className="mb-8">
+        <h1 className="text-2xl font-black text-gray-900">Atoms Component</h1>
+        <p className="text-sm text-gray-500">디자인 시스템의 최소 단위 컴포넌트입니다.</p>
+      </header>
 
-      <main className={LAYOUT.main}>
-        <h1 className="text-3xl font-bold sm:text-4xl">Atom Component Guide</h1>
-        <p className="mt-2 text-sm text-slate-600 sm:text-base">
-          좌측 컴포넌트 메뉴를 선택하면 우측 프리뷰가 표시됩니다.
-        </p>
+      <div className={LAYOUT.content}>
+        <aside className={LAYOUT.lnb}>
+          <nav className={LAYOUT.lnbNav}>
+            {TAB_ITEMS.map(({ key, label }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setActiveTab(key)}
+                className={`${TAB_STYLE.base} ${
+                  activeTab === key ? TAB_STYLE.active : TAB_STYLE.inactive
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+        </aside>
 
-        <div className={LAYOUT.content}>
-          <aside className={LAYOUT.lnb}>
-            <nav className={LAYOUT.lnbNav}>
-              {TAB_ITEMS.map(({ key, label }) => (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setActiveTab(key)}
-                  className={`${TAB_STYLE.base} ${
-                    activeTab === key ? TAB_STYLE.active : TAB_STYLE.inactive
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </nav>
-          </aside>
-
-          <section className={LAYOUT.view}>{view}</section>
-        </div>
-      </main>
+        <section className={LAYOUT.view}>{view}</section>
+      </div>
     </div>
   )
 }
-
