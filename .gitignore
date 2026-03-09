@@ -59,5 +59,4 @@ Thumbs.db
 .idea/
 
 .npm-cache
-*storybook.log
-storybook-static
+

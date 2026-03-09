@@ -130,14 +130,14 @@ const VARIANT_CLASSES = {
 } as const;
 
 const SIZE_CLASSES = {
-  sm: "h-[32px] px-[12px] text-DA-B4",
-  md: "h-[40px] px-[24px] text-DA-B1",
+  sm: "h-[32px] px-[12px] text-da-b4",
+  md: "h-[40px] px-[24px] text-da-b1",
   iconSm: "h-[16px] rounded-0 px-0",
   iconMd: "h-[32px] rounded-[8px] px-[4px]",
-  generateSm: "h-[32px] rounded-[8px] px-[12px] text-DA-B2",
-  generateMd: "h-[40px] rounded-[8px] px-[12px] text-DA-B1",
-  generateLg: "h-[60px] rounded-[16px] px-[24px] text-DA-H3",
-  generateXlg: "h-[80px] rounded-[999px] px-[60px] text-DA-H1",
+  generateSm: "h-[32px] rounded-[8px] px-[12px] text-da-b2",
+  generateMd: "h-[40px] rounded-[8px] px-[12px] text-da-b1",
+  generateLg: "h-[60px] rounded-[16px] px-[24px] text-da-h3",
+  generateXlg: "h-[80px] rounded-[999px] px-[60px] text-da-h1",
 } as const;
 
 const ICON_SLOT_CLASS = cv(

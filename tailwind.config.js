@@ -127,13 +127,13 @@ module.exports = {
         "Md": "24px",
       },
       fontSize: {
-        "DA-H1": ["var(--DA-Font-Size-H1, 2rem)", { lineHeight: "100%", letterSpacing: "-0.64px" }],      /* 32px */
-        "DA-H2": ["var(--DA-Font-Size-H2, 1.5rem)", { lineHeight: "150%", letterSpacing: "-0.48px" }],    /* 24px */
-        "DA-H3": ["var(--DA-Font-Size-H3, 1.25rem)", { lineHeight: "150%", letterSpacing: "-0.4px" }],    /* 20px */
-        "DA-B1": ["var(--DA-Font-Size-B1, 1.125rem)", { lineHeight: "150%", letterSpacing: "-0.36px" }],  /* 18px */
-        "DA-B2": ["var(--DA-Font-Size-B2, 1rem)", { lineHeight: "150%", letterSpacing: "-0.32px" }],      /* 16px */
-        "DA-B3": ["var(--DA-Font-Size-B3, 0.875rem)", { lineHeight: "150%", letterSpacing: "-0.28px" }],  /* 14px */
-        "DA-B4": ["var(--DA-Font-Size-B4, 0.75rem)", { lineHeight: "150%", letterSpacing: "-0.24px" }],   /* 12px */
+        "da-h1": ["32px", { lineHeight: "100%", letterSpacing: "-0.64px" }],
+        "da-h2": ["24px", { lineHeight: "150%", letterSpacing: "-0.48px" }],
+        "da-h3": ["20px", { lineHeight: "150%", letterSpacing: "-0.4px" }],
+        "da-b1": ["18px", { lineHeight: "150%", letterSpacing: "-0.36px" }],
+        "da-b2": ["16px", { lineHeight: "150%", letterSpacing: "-0.32px" }],
+        "da-b3": ["14px", { lineHeight: "150%", letterSpacing: "-0.28px" }],
+        "da-b4": ["12px", { lineHeight: "150%", letterSpacing: "-0.24px" }],
       },
     }
   },

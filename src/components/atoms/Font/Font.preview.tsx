@@ -1,14 +1,14 @@
 import React from 'react';
 
-// 폰트 스타일 리스트 (기존 설정 유지)
+// 디자인 토큰 리스트 (수정 없음)
 const FONT_LIST = [
-  { id: 'DA-H1', name: 'Heading 1', size: '32px', lh: '100%', ls: '-0.64px' },
-  { id: 'DA-H2', name: 'Heading 2', size: '24px', lh: '150%', ls: '-0.48px' },
-  { id: 'DA-H3', name: 'Heading 3', size: '20px', lh: '150%', ls: '-0.4px' },
-  { id: 'DA-B1', name: 'Body 1', size: '18px', lh: '150%', ls: '-0.36px' },
-  { id: 'DA-B2', name: 'Body 2', size: '16px', lh: '150%', ls: '-0.32px' },
-  { id: 'DA-B3', name: 'Body 3', size: '14px', lh: '150%', ls: '-0.28px' },
-  { id: 'DA-B4', name: 'Body 4', size: '12px', lh: '150%', ls: '-0.24px' },
+  { id: 'da-h1', name: 'Heading 1', size: '32px', lh: '100%', ls: '-0.64px' },
+  { id: 'da-h2', name: 'Heading 2', size: '24px', lh: '150%', ls: '-0.48px' },
+  { id: 'da-h3', name: 'Heading 3', size: '20px', lh: '150%', ls: '-0.4px' },
+  { id: 'da-b1', name: 'Body 1', size: '18px', lh: '150%', ls: '-0.36px' },
+  { id: 'da-b2', name: 'Body 2', size: '16px', lh: '150%', ls: '-0.32px' },
+  { id: 'da-b3', name: 'Body 3', size: '14px', lh: '150%', ls: '-0.28px' },
+  { id: 'da-b4', name: 'Body 4', size: '12px', lh: '150%', ls: '-0.24px' },
 ] as const;
 
 const FontPreview = () => {
@@ -30,12 +30,26 @@ const FontPreview = () => {
               <span>Letter-Spacing: {font.ls}</span>
             </div>
 
-            {/* 실제 적용 미리보기 */}
-            <div className={`text-${font.id} break-all`}>
+            {/* 실제 적용 미리보기: style 속성으로 직접 주입 */}
+            <div 
+              style={{ 
+                fontSize: font.size, 
+                lineHeight: font.lh, 
+                letterSpacing: font.ls 
+              }} 
+              className="break-all font-sans"
+            >
               {font.name} - 다람쥐 헌 쳇바퀴에 타고파 12345
             </div>
             
-            <p className={`text-${font.id} text-gray-600`}>
+            <p 
+              style={{ 
+                fontSize: font.size, 
+                lineHeight: font.lh, 
+                letterSpacing: font.ls 
+              }} 
+              className="text-gray-600 font-sans"
+            >
               The quick brown fox jumps over the lazy dog.
             </p>
           </div>
