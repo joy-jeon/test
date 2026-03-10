@@ -36,7 +36,7 @@ const EmptyState = () => {
           과제를 생성해주세요
         </h1>
 
-        <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size={48} />}>
+        <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size="lg" />}>
           과제생성
         </Button>
       </div>

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { ButtonPreview } from '@/components/atoms/Button/Button.preview'
 import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
 import FontPreview from '@/components/atoms/Font/Font.preview'
+import { TabPreview } from '@/components/atoms/Tab/Tab.preview'
 
 const LAYOUT = {
   main: 'mx-auto w-full max-w-6xl',
@@ -21,6 +22,7 @@ const TAB_ITEMS = [
   { key: 'button', label: 'Button' },
   { key: 'icon', label: 'Icon' },
   { key: 'font', label: 'Font' },
+  { key: 'tab', label: 'Tab' },
 ] as const
 
 export function AtomsPreview() {
@@ -29,6 +31,7 @@ export function AtomsPreview() {
   const view = useMemo(() => {
     if (activeTab === 'icon') return <IconPreview />
     if (activeTab === 'font') return <FontPreview />
+    if (activeTab === 'tab') return <TabPreview />
     return <ButtonPreview />
   }, [activeTab])
 

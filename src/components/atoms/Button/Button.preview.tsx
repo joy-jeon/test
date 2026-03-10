@@ -44,7 +44,7 @@ export function ButtonPreview() {
           able={
             <>
               <Button variant="primarySolid">primarySolid</Button>
-              <Button variant="primarySolid" leftIcon={<Icon name="plus" size={24} />}>
+              <Button variant="primarySolid" leftIcon={<Icon name="plus" size="md" />}>
                 primarySolid
               </Button>
             </>
@@ -54,7 +54,7 @@ export function ButtonPreview() {
               <Button variant="primarySolid" disabled>
                 primarySolid
               </Button>
-              <Button variant="primarySolid" leftIcon={<Icon name="plus" size={24} />} disabled>
+              <Button variant="primarySolid" leftIcon={<Icon name="plus" size="md" />} disabled>
                 primarySolid
               </Button>
             </>
@@ -66,7 +66,7 @@ export function ButtonPreview() {
           able={
             <>
               <Button variant="primaryLine">primaryLine</Button>
-              <Button variant="primaryLine" leftIcon={<Icon name="setting" size={24} />}>
+              <Button variant="primaryLine" leftIcon={<Icon name="setting" size="md" />}>
                 primaryLine
               </Button>
             </>
@@ -76,7 +76,7 @@ export function ButtonPreview() {
               <Button variant="primaryLine" disabled>
                 primaryLine
               </Button>
-              <Button variant="primaryLine" leftIcon={<Icon name="setting" size={24} />} disabled>
+              <Button variant="primaryLine" leftIcon={<Icon name="setting" size="md" />} disabled>
                 primaryLine
               </Button>
             </>
@@ -90,7 +90,7 @@ export function ButtonPreview() {
               <Button variant="secondarySolid" size="md">
                 secondarySolid
               </Button>
-              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size={24} />}>
+              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size="md" />}>
                 secondaryLine
               </Button>
             </>
@@ -100,7 +100,7 @@ export function ButtonPreview() {
               <Button variant="secondarySolid" size="md" disabled>
                 secondarySolid
               </Button>
-              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size={24} />} disabled>
+              <Button variant="secondarySolid" size="md" leftIcon={<Icon name="plus" size="md" />} disabled>
               secondarySolid
               </Button>
             </>
@@ -114,7 +114,7 @@ export function ButtonPreview() {
               <Button variant="secondaryLine" size="md">
                 secondaryLine
               </Button>
-              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size={24} />}>
+              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size="md" />}>
                 secondaryLine
               </Button>
             </>
@@ -124,7 +124,7 @@ export function ButtonPreview() {
               <Button variant="secondaryLine" size="md" disabled>
                 secondaryLine
               </Button>
-              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size={24} />} disabled>
+              <Button variant="secondaryLine" size="md" leftIcon={<Icon name="plus" size="md" />} disabled>
                 secondaryLine
               </Button>
             </>
@@ -135,23 +135,23 @@ export function ButtonPreview() {
           title="Generate"
           able={
             <>
-              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size={24} />}>
+              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size="md" />}>
                 과제생성
               </Button>
-              <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size={24} />}>
+              <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size="md" />}>
                 과제생성
               </Button>
               <Button variant="generate" size="generateLg" leftIcon={<Icon name="ai" size={32} />}>
                 과제생성
               </Button>
-              <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size={48} />}>
+              <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size="lg" />}>
                 과제생성
               </Button>
             </>
           }
           disabled={
             <>
-              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size={24} />} disabled>
+              <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size="md" />} disabled>
                 과제생성
               </Button>
             </>
@@ -164,29 +164,29 @@ export function ButtonPreview() {
           able={
             <>
               <Button variant="iconSolid" aria-label="검색">
-                <Icon name="search" size={24} />
+                <Icon name="search" size="md" />
               </Button>
               
               <Button variant="iconLine" aria-label="설정">
-                <Icon name="plus" size={24} />
+                <Icon name="plus" size="md" />
               </Button>
               
              
               <Button variant="icon" aria-label="초기화 gray">
-                <Icon name="closeCircleFill" size={16} tone="gray" />
+                <Icon name="closeCircleFill" size="sm" tone="gray" />
               </Button>
             </>
           }
           disabled={
             <>
               <Button variant="iconSolid" aria-label="검색" disabled>
-                <Icon name="search" size={24} />
+                <Icon name="search" size="md" />
               </Button>
               <Button variant="iconLine" aria-label="설정" disabled>
-                <Icon name="plus" size={24} />
+                <Icon name="plus" size="md" />
               </Button>
               <Button variant="icon" aria-label="초기화" disabled>
-                <Icon name="closeCircleFill" size={16} />
+                <Icon name="closeCircleFill" size="sm" />
               </Button>
             </>
           }
