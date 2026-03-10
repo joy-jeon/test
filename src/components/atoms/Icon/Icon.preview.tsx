@@ -70,18 +70,17 @@ export function IconPreview() {
   return (
     <section className="rounded-xl border border-slate-200 bg-da-white p-5">
       <h2 className="text-xl font-semibold text-slate-900">Icon Preview</h2>
-      <p className="mt-1 text-sm text-slate-600">대표 사이즈: 24px / 32px / 60px(animation, state) 16px, 48px 예외</p>
+      <p className="mt-1 text-sm text-slate-600">대표 사이즈: sm(16px) / md(24px) / lg(60px)</p>
 
+      {/* 1. Icon 16 (sm) 영역 */}
       <section className="mt-8">
-        <h3 className="text-base font-semibold text-slate-800">Icon 16</h3>
+        <h3 className="text-base font-semibold text-slate-800">Icon 16 (sm)</h3>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 md:max-w-2xl">
           {ICON_16_NAMES.map((name, index) => (
-            <div
-              key={`16-${name}`}
-              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
-            >
-              <div className="flex h-8 items-center justify-center text-da-icon-gray">
-                <Icon name={name} size={16} />
+            <div key={`16-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
+              <div className="flex h-8 items-center justify-center">
+                {/* size={16} 대신 "sm" 사용 */}
+                <Icon name={name} size="sm" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
                 {String(index + 1).padStart(2, '0')}. {name}
@@ -91,16 +90,15 @@ export function IconPreview() {
         </div>
       </section>
 
+      {/* 2. Icon 24 (md) 영역 */}
       <section className="mt-6">
-        <h3 className="text-base font-semibold text-slate-800">Icon 24</h3>
+        <h3 className="text-base font-semibold text-slate-800">Icon 24 (md)</h3>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {ICON_NAMES.map((name, index) => (
-            <div
-              key={`24-${name}`}
-              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
-            >
-              <div className="flex h-10 items-center justify-center text-da-icon-gray">
-                <Icon name={name} size={24} />
+            <div key={`24-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
+              <div className="flex h-10 items-center justify-center">
+                {/* 기본값이 "md"이므로 size 생략 가능 혹은 "md" 명시 */}
+                <Icon name={name} size="md" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
                 {String(index + 1).padStart(2, '0')}. {name}
@@ -110,15 +108,14 @@ export function IconPreview() {
         </div>
       </section>
 
+      {/* 3. Icon 32 (Custom) 영역 */}
       <section className="mt-8">
-        <h3 className="text-base font-semibold text-slate-800">Icon 32</h3>
+        <h3 className="text-base font-semibold text-slate-800">Icon 32 (Custom)</h3>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 md:max-w-2xl">
           {ICON_32_NAMES.map((name, index) => (
-            <div
-              key={`32-${name}`}
-              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
-            >
-              <div className="flex h-12 items-center justify-center text-da-icon-gray">
+            <div key={`32-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
+              <div className="flex h-12 items-center justify-center">
+                {/* 규격 외 사이즈는 기존처럼 숫자 입력 (자동으로 style 주입됨) */}
                 <Icon name={name} size={32} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -129,60 +126,35 @@ export function IconPreview() {
         </div>
       </section>
 
+      {/* 4. Icon Color Usage (tone 활용) */}
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon Color Usage</h3>
-        <p className="mt-1 text-xs text-slate-600">
-          wrapper의 텍스트 컬러(Tailwind 변수) 또는 Icon의 tone으로 색상 제어
-        </p>
-
         <div className="mt-3 grid gap-4 md:grid-cols-2">
-          
-
           <div className="rounded-lg border border-slate-200 bg-da-white p-4">
-            <p className="text-xs font-medium text-slate-700">Icon tone prop (white / gray)</p>
+            <p className="text-xs font-medium text-slate-700">Icon tone prop (primary / disabled)</p>
             <div className="mt-3 flex items-center gap-4">
-              <div className="flex items-center gap-2 rounded-md bg-da-icon-gray px-3 py-2 text-da-white">
-                <Icon name="plus" size={24} tone="white" />
-                <span className="text-xs text-slate-100">tone="white"</span>
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="primary" />
+                <span className="text-xs text-da-t-primary">tone="primary"</span>
               </div>
-              <div className="flex items-center gap-2 rounded-md bg-da-white px-3 py-2">
-                <Icon name="plus" size={24} tone="gray" />
-                <span className="text-xs text-slate-700">tone="gray"</span>
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="disabled" />
+                <span className="text-xs text-da-t-disabled">tone="disabled"</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* 5. Icon 60 (lg) 영역 */}
       <section className="mt-8">
-        <h3 className="text-base font-semibold text-slate-800">Icon 60 (Animation)</h3>
+        <h3 className="text-base font-semibold text-slate-800">Icon 60 (lg)</h3>
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:max-w-2xl">
-          {ICON_60_ANIM_NAMES.map((name, index) => (
-            <div
-              key={`60-${name}`}
-              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
-            >
-              <div className="flex h-20 items-center justify-center text-da-icon-gray-State">
-                <Icon name={name} size={60} />
-              </div>
-              <p className="mt-2 break-all text-xs text-slate-700">
-                {String(index + 1).padStart(2, '0')}. {name}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-8">
-        <h3 className="text-base font-semibold text-slate-800">Icon 60 (State)</h3>
-        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {ICON_60_STATE_NAMES.map((name, index) => (
-            <div
-              key={`60-state-${name}`}
-              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
-            >
-              <div className="flex h-20 items-center justify-center text-da-icon-gray">
-                <Icon name={name} size={60} tone="gray" />
+          {[...ICON_60_ANIM_NAMES, ...ICON_60_STATE_NAMES].map((name, index) => (
+            <div key={`60-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
+              <div className="flex h-20 items-center justify-center">
+                {/* size={60} 대신 "lg" 사용 */}
+                <Icon name={name} size="lg" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
                 {String(index + 1).padStart(2, '0')}. {name}

@@ -1,5 +1,5 @@
 import React from 'react'
-import ButtonGroup from '@/components/molecules/ButtonGroup'
+import ButtonGroup from '@/components/molecules/ButtonGraoup/ButtonGroup'
 import { Button } from '@/components/atoms'
 
 export function ButtonGroupPreview() {

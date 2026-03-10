@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // 추가할 프리뷰 컴포넌트 임포트
-import { ButtonGroupPreview } from './ButtonGroup.preview' 
+import { ButtonGroupPreview } from './ButtonGraoup/ButtonGroup.preview' 
 
 const TAB_ITEMS = [
   { key: 'buttonGroup', label: 'ButtonGroup' }, // 추가
