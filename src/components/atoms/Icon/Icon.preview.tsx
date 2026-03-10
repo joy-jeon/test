@@ -63,7 +63,7 @@ const ICON_NAMES: IconName[] = [
 
 const ICON_32_NAMES: IconName[] = ['setting', 'man', 'home', 'menu']
 const ICON_16_NAMES: IconName[] = ['closeCircleFill']
-const ICON_60_ANIM_NAMES: IconName[] = ['aiGenerate60Animated', 'aiGenerate60v1', 'aiGenerate60v2', 'aiGenerate60v3']
+const ICON_60_ANIM_NAMES: IconName[] = ['aiAnimated']
 const ICON_60_STATE_NAMES: IconName[] = ['stateNodata60', 'stateNotFound60', 'state3_60']
 
 export function IconPreview() {

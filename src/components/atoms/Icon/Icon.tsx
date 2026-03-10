@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useId, useEffect } from 'react' // useEffect 추가
 import { cva, type VariantProps } from 'class-variance-authority'
 import { twMerge } from 'tailwind-merge'
 import { clsx, type ClassValue } from 'clsx'
+import { motion, animate } from 'framer-motion' // Framer Motion import
 import { ICON_RAW_MAP, type IconRawName } from './iconRaw'
+import { useRef } from 'react'
+
 
 const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 
@@ -14,8 +17,7 @@ const iconVariants = cva('inline-block shrink-0 transition-colors duration-150',
     size: {
       sm: 'w-4 h-4',       // 16px
       md: 'w-6 h-6',       // 24px
-      lg: 'w-8 h-8',       // 32px
-      xlg: 'w-[3.75rem] h-[3.75rem]', // 60px
+      lg: 'w-[3.75rem] h-[3.75rem]', // 60px
     },
     tone: {
       white: 'text-da-white',
@@ -30,14 +32,16 @@ const iconVariants = cva('inline-block shrink-0 transition-colors duration-150',
   },
 })
 
-export type IconName = IconRawName | 'closeCircleFill' | 'aiGenerate60Animated'
-export type IconSize = 'sm' | 'md' | 'lg' | 'xlg' | number
+// 새로운 애니메이션 아이콘 이름 추가
+export type IconName = IconRawName | 'closeCircleFill' | 'aiAnimated'
+export type IconSize = 'sm' | 'md' | 'lg' | number
 
+// VariantProps에서 size를 제외(Omit)하고 다시 정의합니다.
 interface IconProps
   extends Omit<React.SVGProps<SVGSVGElement>, 'size' | 'color'>,
     Omit<VariantProps<typeof iconVariants>, 'size'> {
   name: IconName
-  size?: IconSize //  'sm' | 'md' | 'lg' | 'xlg' | number
+  size?: IconSize 
   color?: string
   hoverColor?: string
 }
@@ -48,65 +52,41 @@ const isIconRawName = (name: IconName): name is IconRawName => {
   return Object.prototype.hasOwnProperty.call(ICON_RAW_MAP, name)
 }
 
-const scopeSvgBody = (body: string, scope: string): string => {
-  const ids = Array.from(body.matchAll(/id="([^"]+)"/g)).map((m) => m[1])
-  if (!ids.length) return body
-
-  let scoped = body
-  ids.forEach((id) => {
-    const next = `${scope}-${id}`
-    scoped = scoped.split(`id="${id}"`).join(`id="${next}"`)
-    scoped = scoped.split(`url(#${id})`).join(`url(#${next})`)
-    scoped = scoped.split(`href="#${id}"`).join(`href="#${next}"`)
-    scoped = scoped.split(`xlink:href="#${id}"`).join(`xlink:href="#${next}"`)
-  })
-
-  return scoped
-}
-
+// getViewBox 함수 업데이트
 const getViewBox = (name: IconName): string => {
   if (name === 'closeCircleFill') return '0 0 16 16'
-  if (name === 'aiGenerate60Animated') return '0 0 60 60'
+  if (name === 'aiAnimated') return '0 0 60 60'
   if (isIconRawName(name)) return ICON_RAW_MAP[name].viewBox
   return '0 0 24 24'
 }
 
-const Icon = ({
-  name,
-  size = 'md',
-  className,
-  tone,
-  color,
-  hoverColor,
-  style,
-  ...props
-}: IconProps) => {
-  const isState60Icon = ICON_60_STATE_SET.has(name) || size === 'xlg' || size === 60
-  const isSemanticSize = typeof size === 'string' && ['sm', 'md', 'lg' , 'xlg'].includes(size)
+const Icon = ({ name, size = 'md', className, tone, color, hoverColor, style, ...props }: IconProps) => {
+  const isLgAnimatedIcon = name === 'aiAnimated'
+  const isSemanticSize = typeof size === 'string' && ['sm', 'md', 'lg'].includes(size)
   
-  // tone이 없을 경우 기본값 설정
-  const resolvedTone = tone ?? (isState60Icon ? undefined : 'gray')
+  // 1. tone이 없으면 강제로 'gray'를 넣지 않고 undefined로 두어 CVA 클래스 주입을 방지합니다.
+  const resolvedTone = tone
 
   const iconStyle = {
     ...style,
-    // 숫자로 입력된 경우만 style 주입, 그 외에는 Tailwind 클래스로 제어
     ...(!isSemanticSize ? { width: size, height: size } : {}),
-    ...(tone
+    ...(resolvedTone
       ? {}
       : {
-          '--icon-color': color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor'),
-          '--icon-hover-color': hoverColor ?? color ?? (isState60Icon ? '#C4CCD3FF' : 'currentColor'),
+          // 2. color가 없으면 'currentColor'를 기본으로 하여 부모의 text-color를 그대로 상속받습니다.
+          '--icon-color': color ?? 'currentColor',
+          '--icon-hover-color': hoverColor ?? color ?? 'currentColor',
         }),
   } as React.CSSProperties
 
-  const scopeId = React.useId().replace(/[:]/g, '')
+  const scopeId = useId().replace(/[:]/g, '')
 
   return (
     <svg
       suppressHydrationWarning
       className={cn(
         iconVariants({ 
-          size: isSemanticSize ? (size as 'sm' | 'md' | 'lg' | 'xlg') : undefined, 
+          size: isSemanticSize ? (size as 'sm' | 'md' | 'lg') : (name === 'aiAnimated' ? 'lg' : undefined), // Flow 애니메이션은 lg로 고정
           tone: resolvedTone 
         }),
         !tone && 'text-[var(--icon-color)] group-hover:text-[var(--icon-hover-color)]',
@@ -124,8 +104,26 @@ const Icon = ({
   )
 }
 
+// scopeSvgBody 함수는 동일
+const scopeSvgBody = (body: string, scope: string): string => {
+  const ids = Array.from(body.matchAll(/id="([^"]+)"/g)).map((m) => m[1])
+  if (!ids.length) return body
+
+  let scoped = body
+  ids.forEach((id) => {
+    const next = `${scope}-${id}`
+    scoped = scoped.split(`id="${id}"`).join(`id="${next}"`)
+    scoped = scoped.split(`url(#${id})`).join(`url(#${next})`)
+    scoped = scoped.split(`href="#${id}"`).join(`href="#${next}"`)
+    scoped = scoped.split(`xlink:href="#${id}"`).join(`xlink:href="#${next}"`)
+  })
+
+  return scoped
+}
+
 const renderIcon = (name: IconName, scopeId: string): React.ReactNode => {
   if (isIconRawName(name)) {
+    // raw SVG 스코핑 로직
     return <g dangerouslySetInnerHTML={{ __html: scopeSvgBody(ICON_RAW_MAP[name].body, `${scopeId}-${name}`) }} />
   }
 
@@ -137,49 +135,61 @@ const renderIcon = (name: IconName, scopeId: string): React.ReactNode => {
           <path d="M4.26732 12.6666L3.33398 11.7333L7.06732 7.99998L3.33398 4.26665L4.26732 3.33331L8.00065 7.06665L11.734 3.33331L12.6673 4.26665L8.93398 7.99998L12.6673 11.7333L11.734 12.6666L8.00065 8.93331L4.26732 12.6666Z" fill="white" />
         </>
       )
-    case 'aiGenerate60Animated': {
-      const maskId = `${scopeId}-ai60-mask`
-      const flowGradientId = `${scopeId}-ai60-flow-grad`
-      const glowGradientId = `${scopeId}-ai60-glow-grad`
+    // Step 2-1: 새로운 Framer Motion 기반 애니메이션 로직 추가
+    case 'aiAnimated': {
+      const gradientId = `${scopeId}-flow-grad`
+      const maskId = `${scopeId}-flow-mask`
+      const stopRef1 = useRef<SVGStopElement>(null)
+      const stopRef2 = useRef<SVGStopElement>(null)
+      const stopRef3 = useRef<SVGStopElement>(null)
 
+      useEffect(() => {
+        const stops = [stopRef1.current, stopRef2.current, stopRef3.current]
+        if (!stops[0] || !stops[1] || !stops[2]) return
+    
+        const duration = 3 // 흐르는 속도
+        const ease = "linear"
+        const ani1 = '#687AE6' // Ani/Ani1
+        const ani2 = '#D867BF' // Ani/Ani2
+        const ani3 = '#9CA8FF' // Ani/Ani3
+    
+        // 각 Stop의 시작 컬러를 다르게 설정하여 3가지 색이 동시에 보이게 함
+        // 1번 Stop: 1 -> 2 -> 3
+        animate(stops[0]!, { stopColor: [ani1, ani2, ani3, ani1] }, { duration, ease, repeat: Infinity })
+        // 2번 Stop: 2 -> 3 -> 1
+        animate(stops[1]!, { stopColor: [ani2, ani3, ani1, ani2] }, { duration, ease, repeat: Infinity })
+        // 3번 Stop: 3 -> 1 -> 2
+        animate(stops[2]!, { stopColor: [ani3, ani1, ani2, ani3] }, { duration, ease, repeat: Infinity })
+      }, [])
+    
       return (
-        <>
+        <g transform="translate(7, 4.5)"> {/* 60x60 중앙 정렬을 위한 보정 */}
           <defs>
-            <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="60" height="60">
-              <path fillRule="evenodd" clipRule="evenodd" d="M13.7885 41.3143L16.0513 34.5258H18.8974L21.1602 41.3143L27.9487 43.5771V46.4232L21.1602 48.686L18.8974 55.4745H16.0513L13.7885 48.686L7 46.4232V43.5771L13.7885 41.3143Z" fill="white" />
-              <path d="M33.2364 5.00015C33.0809 4.99992 32.9218 5 32.7585 5.00008L32.5199 5.00015H33.2364Z" fill="white" />
-              <path d="M32.4743 5.00016L26.8711 5.00016C24.8587 5.00012 23.1978 5.0001 21.8448 5.11064C20.4395 5.22545 19.1478 5.47187 17.9344 6.09009C16.0528 7.04883 14.523 8.57863 13.5643 10.4603C12.9461 11.6736 12.6996 12.9654 12.5848 14.3706C12.4743 15.7236 12.4743 17.3845 12.4743 19.3969V30.0002H21.2243L23.7243 37.5002L32.4743 40.0002V50.0002H38.0777C40.0901 50.0002 41.7509 50.0002 43.1039 49.8897C44.5092 49.7749 45.8009 49.5285 47.0143 48.9102C48.8959 47.9515 50.4257 46.4217 51.3844 44.5401C52.0026 43.3267 52.2491 42.035 52.3639 40.6297C52.4744 39.2767 52.4744 37.6159 52.4743 35.6035V25.0002H34.9743C33.5936 25.0002 32.4743 23.8809 32.4743 22.5002V5.00016Z" fill="white" />
-              <path d="M52.4743 24.9707L52.4744 24.716C52.4745 24.5515 52.4746 24.3912 52.4743 24.2347V24.9707Z" fill="white" />
-              <path d="M51.9796 20.0002C51.7374 19.2591 51.409 18.5481 51.0007 17.8818C50.3792 16.8675 49.5306 16.0197 48.4076 14.8977L42.5768 9.06698C41.4548 7.9439 40.607 7.09533 39.5927 6.47376C38.9264 6.06545 38.2154 5.73714 37.4743 5.49495V20.0002H51.9796Z" fill="white" />
+            <linearGradient id={gradientId} x1="1" y1="1" x2="0" y2="0">
+              <stop ref={stopRef1} offset="0%" />
+              <stop ref={stopRef2} offset="50%" />
+              <stop ref={stopRef3} offset="100%" />
+            </linearGradient>
+            
+            <mask id={maskId}>
+              <g fill="white">
+                <path fillRule="evenodd" clipRule="evenodd" d="M6.78849 36.3143L9.05132 29.5258H11.8974L14.1602 36.3143L20.9487 38.5771V41.4232L14.1602 43.686L11.8974 50.4745H9.05132L6.78849 43.686L0 41.4232V38.5771L6.78849 36.3143Z" />
+                <path d="M26.2364 0.000152588C26.0809 -7.61626e-05 25.9218 -4.42116e-07 25.7585 7.72265e-05L25.5199 0.000152588H26.2364Z" />
+                <path d="M25.4743 0.000157687L19.8711 0.000156501C17.8587 0.000124612 16.1978 9.83849e-05 14.8448 0.110642C13.4395 0.225455 12.1478 0.471865 10.9344 1.09009C9.05282 2.04883 7.52301 3.57863 6.56428 5.46025C5.94605 6.67359 5.69964 7.96535 5.58483 9.37059C5.47429 10.7236 5.47431 12.3845 5.47434 14.3969V25.0002H14.2243L16.7243 32.5002L25.4743 35.0002V45.0002H31.0777C33.0901 45.0002 34.7509 45.0002 36.1039 44.8897C37.5092 44.7749 38.8009 44.5285 40.0143 43.9102C41.8959 42.9515 43.4257 41.4217 44.3844 39.5401C45.0026 38.3267 45.2491 37.035 45.3639 35.6297C45.4744 34.2767 45.4744 32.6159 45.4743 30.6035V20.0002H27.9743C26.5936 20.0002 25.4743 18.8809 25.4743 17.5002V0.000157687Z" />
+                <path d="M45.4743 19.9707L45.4744 19.716C45.4745 19.5515 45.4746 19.3912 45.4743 19.2347V19.9707Z" />
+                <path d="M44.9796 15.0002C44.7374 14.2591 44.409 13.5481 44.0007 12.8818C43.3792 11.8675 42.5306 11.0197 41.4076 9.89773L35.5768 4.06698C34.4548 2.9439 33.607 2.09533 32.5927 1.47376C31.9264 1.06545 31.2154 0.73714 30.4743 0.494946V15.0002H44.9796Z" />
+              </g>
             </mask>
-            <linearGradient id={flowGradientId} x1="0" y1="0" x2="220" y2="220" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#687AE6" />
-              <stop offset="18%" stopColor="#9CA8FF" />
-              <stop offset="36%" stopColor="#D867BF" />
-              <stop offset="54%" stopColor="#7B8AF0" />
-              <stop offset="72%" stopColor="#D867BF" />
-              <stop offset="90%" stopColor="#9CA8FF" />
-              <stop offset="100%" stopColor="#687AE6" />
-            </linearGradient>
-            <linearGradient id={glowGradientId} x1="-40" y1="110" x2="110" y2="-40" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="rgba(255,255,255,0)" />
-              <stop offset="40%" stopColor="rgba(255,255,255,0.08)" />
-              <stop offset="50%" stopColor="rgba(255,255,255,0.36)" />
-              <stop offset="60%" stopColor="rgba(255,255,255,0.08)" />
-              <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-            </linearGradient>
           </defs>
-          <g mask={`url(#${maskId})`} className="origin-center [animation:icon60AISoftFloat_7s_ease-in-out_infinite]">
-            <g transform="rotate(-28 30 30)" className="[animation:icon60FlowTile_3.6s_linear_infinite]">
-              <rect x="-260" y="-180" width="260" height="420" fill={`url(#${flowGradientId})`} />
-              <rect x="0" y="-180" width="260" height="420" fill={`url(#${flowGradientId})`} />
-            </g>
-            <g transform="rotate(-28 30 30)" className="[animation:icon60FlowTileSlow_6.4s_linear_infinite]">
-              <rect x="-260" y="-180" width="260" height="420" fill={`url(#${glowGradientId})`} opacity="0.6" />
-              <rect x="0" y="-180" width="260" height="420" fill={`url(#${glowGradientId})`} opacity="0.6" />
-            </g>
-          </g>
-        </>
+    
+          <motion.rect 
+            width="46" height="51" // SVG 원본 사이즈에 맞춤
+            fill={`url(#${gradientId})`} 
+            mask={`url(#${maskId})`}
+            animate={{ y: [0, -3, 0] }} // 둥둥이는 효과 조정 
+            transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
+          />
+        </g>
       )
     }
     default:
