@@ -1,0 +1,112 @@
+/* src/styles/tokens.css */
+
+:root {
+    /* --- Colors: Text --- */
+    --da-color-t-title: #1A1A1A;
+    --da-color-t-body: #444444;
+    --da-color-t-discription: #666666;
+    --da-color-t-placeholder: #99A1AF;
+    --da-color-t-disabled: #A5A5A5;
+    --da-color-t-inverse: #F3F3F3;
+    --da-color-t-primary: #687AE6;
+    --da-color-t-link: #FF8C19;
+    --da-color-t-link-hover: #20BE67;
+    --da-color-t-positive: #009B98;
+    --da-color-t-attention: #FF0000;
+  
+    /* --- Colors: Brand & Identity --- */
+    --da-color-lg-red1: #A50034;
+    --da-color-lg-red2: #FD312E;
+    --da-color-lg-red3: #FF6F6F;
+    --da-color-primary: #687AE6;
+    --da-color-white: #FFFFFF;
+    --da-color-black: #000000;
+  
+    /* --- Colors: Icons --- */
+    --da-color-icon-gray: #74818C;
+    --da-color-icon-gray-state: #C4CCD3;
+    --da-color-icon-gray-hover: #212121;
+    --da-color-icon-gray-disable: #A5A5A5;
+  
+    /* --- Colors: Backgrounds --- */
+    --da-color-bg1: #F8F8F8;
+    --da-color-bg2: #F2F3F7;
+    --da-color-bg3: #F1F3FF;
+    --da-color-bg3-deep: #E0E5FF;
+    --da-color-bg4: #E0E4E8;
+    --da-color-bg5: #F1F7FF;
+  
+    /* --- Colors: Form & Divider & Grid --- */
+    --da-color-form-read-dis-bg: #F4F4F4;
+    --da-color-form-essen-bg: #FDFFE3;
+    --da-color-form-input-line: #CCCCCC;
+    --da-color-form-input-line-focus: #212121;
+    --da-color-divider-content-line: #E0E0E0;
+    --da-color-divider-top-content-line: #D6D6D6;
+    --da-color-grid-top-line: #212121;
+    --da-color-grid-tr-line: #EAEAEA;
+    --da-color-grid-header: #F7F7F7;
+    --da-color-grid-odd: #FAFAFA;
+    --da-color-grid-hover: #EBEBEB;
+    --da-color-grid-focus: #EAFAFF;
+    --da-color-grid-edit: #FFE9A1;
+    --da-color-grid-total: #FEF2E0;
+  
+    /* --- Colors: Buttons --- */
+    --da-color-btn-line: #AAAAAA;
+    --da-color-btn-line-focus: #212121;
+    --da-color-btn-disable: #D6DDEA;
+    --da-color-btn-purple: #687AE6;
+    --da-color-btn-purple-hover: #9DA9F4;
+    --da-color-btn-purple-focus: #2036BE;
+    --da-color-btn-gray: #4E6C84;
+    --da-color-btn-gray-hover: #889BAC;
+    --da-color-btn-gray-focus: #123658;
+    --da-color-btn-white-hover: #F8F8F8;
+    --da-color-btn-tab-default: #FFFFFF;
+  
+    /* --- Colors: Animation Gradient --- */
+    --da-color-ani-1: #687AE6;
+    --da-color-ani-2: #D867BF;
+    --da-color-ani-3: #9CA8FF;
+  
+    /* --- Spacing --- */
+    --da-spacing-xsm: 6px;
+    --da-spacing-sm: 8px;
+    --da-spacing-md: 24px;
+  
+    /* --- Typography: h1 --- */
+    --da-fs-h1: 32px;
+    --da-lh-h1: 100%;
+    --da-ls-h1: -0.64px;
+  
+    /* --- Typography: h2 --- */
+    --da-fs-h2: 24px;
+    --da-lh-h2: 150%;
+    --da-ls-h2: -0.48px;
+  
+    /* --- Typography: h3 --- */
+    --da-fs-h3: 20px;
+    --da-lh-h3: 150%;
+    --da-ls-h3: -0.4px;
+  
+    /* --- Typography: b1 --- */
+    --da-fs-b1: 18px;
+    --da-lh-b1: 150%;
+    --da-ls-b1: -0.36px;
+  
+    /* --- Typography: b2 --- */
+    --da-fs-b2: 16px;
+    --da-lh-b2: 150%;
+    --da-ls-b2: -0.32px;
+  
+    /* --- Typography: b3 --- */
+    --da-fs-b3: 14px;
+    --da-lh-b3: 150%;
+    --da-ls-b3: -0.28px;
+  
+    /* --- Typography: b4 --- */
+    --da-fs-b4: 12px;
+    --da-lh-b4: 150%;
+    --da-ls-b4: -0.24px;
+  }
