@@ -9,9 +9,9 @@ const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs))
 const iconToneVariants = cva('', {
   variants: {
     tone: {
-      white: 'text-White',
+      white: 'text-da-white',
       gray:
-        'text-Icon-Gray group-hover:text-Icon-Gray-Hover group-active:text-Icon-Gray-Hover',
+        'text-da-icon-gray group-hover:text-da-icon-gray-hover group-active:text-da-icon-gray-hover',
     },
     // defaultVariants: {
     //   tone: 'gray',

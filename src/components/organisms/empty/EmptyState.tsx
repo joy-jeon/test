@@ -5,7 +5,7 @@ import { Icon } from '@/components/atoms/Icon/Icon';
 
 const EmptyState = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full min-h-screen bg-White overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center w-full min-h-screen bg-da-white overflow-hidden">
       
       {/* 1. 배경 레이어: public/images 폴더의 파일을 참조합니다 */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -32,7 +32,7 @@ const EmptyState = () => {
           등록된 과제가 없습니다
         </p>
 
-        <h1 className="text-T-Title text-da-h1 font-bold mb-[2.75rem]">
+        <h1 className="text-da-t-title text-da-h1 font-bold mb-[2.75rem]">
           과제를 생성해주세요
         </h1>
 

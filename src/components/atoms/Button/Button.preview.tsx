@@ -18,12 +18,12 @@ function VariantBlock({
       {description && <p className="mt-1 text-xs text-slate-500">{description}</p>}
 
       <div className="mt-3 grid gap-3 md:grid-cols-2">
-        <div className="rounded-md border border-slate-200 bg-white p-3">
+        <div className="rounded-md border border-slate-200 bg-da-white p-3">
           <p className="text-xs font-medium text-emerald-700">Able</p>
           <div className="mt-2 flex flex-wrap items-center gap-2">{able}</div>
         </div>
 
-        <div className="rounded-md border border-slate-200 bg-white p-3">
+        <div className="rounded-md border border-slate-200 bg-da-white p-3">
           <p className="text-xs font-medium text-slate-500">Disabled</p>
           <div className="mt-2 flex flex-wrap items-center gap-2">{disabled}</div>
         </div>
@@ -34,7 +34,7 @@ function VariantBlock({
 
 export function ButtonPreview() {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-slate-200 bg-da-white p-5">
       <h2 className="text-xl font-semibold text-slate-900">Button Preview</h2>
       <p className="mt-1 text-sm text-slate-600">Variant별로 Able / Disabled 상태를 나눠서 확인</p>
 

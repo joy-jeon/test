@@ -13,7 +13,7 @@ const LAYOUT = {
 
 const TAB_STYLE = {
   base: 'w-full rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors',
-  active: 'bg-gray-900 text-white',
+  active: 'bg-gray-900 text-da-white',
   inactive: 'text-gray-700 hover:bg-gray-200',
 } as const
 

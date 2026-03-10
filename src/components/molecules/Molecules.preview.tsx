@@ -25,7 +25,7 @@ export function MoleculesPreview() {
                 key={key}
                 onClick={() => setActiveTab(key)}
                 className={`w-full rounded-lg px-3 py-2 text-left text-sm font-semibold transition-colors ${
-                  activeTab === key ? 'bg-gray-900 text-white' : 'text-gray-700 hover:bg-gray-200'
+                  activeTab === key ? 'bg-gray-900 text-da-white' : 'text-gray-700 hover:bg-gray-200'
                 }`}
               >
                 {label}

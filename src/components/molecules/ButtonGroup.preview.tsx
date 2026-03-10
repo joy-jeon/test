@@ -4,7 +4,7 @@ import { Button } from '@/components/atoms'
 
 export function ButtonGroupPreview() {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-slate-200 bg-da-white p-5">
       <h2 className="text-xl font-semibold text-slate-900">ButtonGroup Preview</h2>
       <p className="mt-1 text-sm text-slate-600">
         align / gap / width / direction 조합으로 Button들을 그룹핑하는 예시입니다.

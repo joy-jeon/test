@@ -68,7 +68,7 @@ const ICON_60_STATE_NAMES: IconName[] = ['stateNodata60', 'stateNotFound60', 'st
 
 export function IconPreview() {
   return (
-    <section className="rounded-xl border border-slate-200 bg-white p-5">
+    <section className="rounded-xl border border-slate-200 bg-da-white p-5">
       <h2 className="text-xl font-semibold text-slate-900">Icon Preview</h2>
       <p className="mt-1 text-sm text-slate-600">대표 사이즈: 24px / 32px / 60px(animation, state) 16px, 48px 예외</p>
 
@@ -78,9 +78,9 @@ export function IconPreview() {
           {ICON_16_NAMES.map((name, index) => (
             <div
               key={`16-${name}`}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
+              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
             >
-              <div className="flex h-8 items-center justify-center text-Icon-Gray">
+              <div className="flex h-8 items-center justify-center text-da-icon-gray">
                 <Icon name={name} size={16} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -97,9 +97,9 @@ export function IconPreview() {
           {ICON_NAMES.map((name, index) => (
             <div
               key={`24-${name}`}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
+              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
             >
-              <div className="flex h-10 items-center justify-center text-Icon-Gray">
+              <div className="flex h-10 items-center justify-center text-da-icon-gray">
                 <Icon name={name} size={24} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -116,9 +116,9 @@ export function IconPreview() {
           {ICON_32_NAMES.map((name, index) => (
             <div
               key={`32-${name}`}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
+              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
             >
-              <div className="flex h-12 items-center justify-center text-Icon-Gray">
+              <div className="flex h-12 items-center justify-center text-da-icon-gray">
                 <Icon name={name} size={32} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -138,14 +138,14 @@ export function IconPreview() {
         <div className="mt-3 grid gap-4 md:grid-cols-2">
           
 
-          <div className="rounded-lg border border-slate-200 bg-white p-4">
+          <div className="rounded-lg border border-slate-200 bg-da-white p-4">
             <p className="text-xs font-medium text-slate-700">Icon tone prop (white / gray)</p>
             <div className="mt-3 flex items-center gap-4">
-              <div className="flex items-center gap-2 rounded-md bg-Icon-Gray px-3 py-2 text-White">
+              <div className="flex items-center gap-2 rounded-md bg-da-icon-gray px-3 py-2 text-da-white">
                 <Icon name="plus" size={24} tone="white" />
                 <span className="text-xs text-slate-100">tone="white"</span>
               </div>
-              <div className="flex items-center gap-2 rounded-md bg-White px-3 py-2">
+              <div className="flex items-center gap-2 rounded-md bg-da-white px-3 py-2">
                 <Icon name="plus" size={24} tone="gray" />
                 <span className="text-xs text-slate-700">tone="gray"</span>
               </div>
@@ -160,9 +160,9 @@ export function IconPreview() {
           {ICON_60_ANIM_NAMES.map((name, index) => (
             <div
               key={`60-${name}`}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
+              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
             >
-              <div className="flex h-20 items-center justify-center text-Icon-Gray-State">
+              <div className="flex h-20 items-center justify-center text-da-icon-gray-State">
                 <Icon name={name} size={60} />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">
@@ -179,9 +179,9 @@ export function IconPreview() {
           {ICON_60_STATE_NAMES.map((name, index) => (
             <div
               key={`60-state-${name}`}
-              className="rounded-lg border border-slate-200 bg-white px-3 py-4 text-center"
+              className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center"
             >
-              <div className="flex h-20 items-center justify-center text-Icon-Gray">
+              <div className="flex h-20 items-center justify-center text-da-icon-gray">
                 <Icon name={name} size={60} tone="gray" />
               </div>
               <p className="mt-2 break-all text-xs text-slate-700">

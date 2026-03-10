@@ -13,7 +13,7 @@ const FONT_LIST = [
 
 const FontPreview = () => {
   return (
-    <div className="p-8 bg-white text-black">
+    <div className="p-8 bg-da-white text-black">
       {/* 제목 영역 */}
       <h1 className="mb-10 pb-4 border-b-2 border-gray-200 text-[24px] font-bold">
         Font System Preview
