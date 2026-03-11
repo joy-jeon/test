@@ -7,9 +7,9 @@ import { MoleculesPreview } from '@/components/molecules/Molecules.preview';
 export default function Home() {
   return (
     <div className="">
-      <EmptyState />
       <AtomsPreview />
       <MoleculesPreview />
+      <EmptyState />
     </div>
   );
 }

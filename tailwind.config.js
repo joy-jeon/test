@@ -12,6 +12,7 @@ module.exports = {
         "da-t-disabled": "var(--da-color-t-disabled)",
         "da-t-inverse": "var(--da-color-t-inverse)",
         "da-t-primary": "var(--da-color-t-primary)",
+        "da-t-primary-deep": "var(--da-color-t-primary-deep)",
         "da-t-link": "var(--da-color-t-link)",
         "da-t-link-hover": "var(--da-color-t-link-hover)",
         "da-t-positive": "var(--da-color-t-positive)",

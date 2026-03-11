@@ -3,6 +3,7 @@ import { ButtonPreview } from '@/components/atoms/Button/Button.preview'
 import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
 import FontPreview from '@/components/atoms/Font/Font.preview'
 import { TabPreview } from '@/components/atoms/Tab/Tab.preview'
+import { ButtonCheckPreview } from '@/components/atoms/Button/ButtonCheck.preview'
 
 const LAYOUT = {
   main: 'mx-auto w-full max-w-6xl',
@@ -20,6 +21,7 @@ const TAB_STYLE = {
 
 const TAB_ITEMS = [
   { key: 'button', label: 'Button' },
+  { key: 'buttonCheck', label: 'ButtonCheck' },
   { key: 'icon', label: 'Icon' },
   { key: 'font', label: 'Font' },
   { key: 'tab', label: 'Tab' },
@@ -29,6 +31,7 @@ export function AtomsPreview() {
   const [activeTab, setActiveTab] = useState<(typeof TAB_ITEMS)[number]['key']>('button')
 
   const view = useMemo(() => {
+    if (activeTab === 'buttonCheck') return <ButtonCheckPreview />
     if (activeTab === 'icon') return <IconPreview />
     if (activeTab === 'font') return <FontPreview />
     if (activeTab === 'tab') return <TabPreview />
