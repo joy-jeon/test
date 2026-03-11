@@ -24,12 +24,12 @@ export const ButtonCheckPreview = () => {
             <ButtonCheck id="state-default" label="미선택 상태" />
           </div>
           <div className="flex flex-col gap-[8px]">
-            <span className="text-[12px] text-da-t-discription">Checked (링확인)</span>
+            <span className="text-[12px] text-da-t-discription">Checked</span>
             <ButtonCheck id="state-checked" label="선택 완료" checked={true} />
           </div>
           <div className="flex flex-col gap-[8px]">
             <span className="text-[12px] text-da-t-discription">Long Text</span>
-            <ButtonCheck id="state-long" label="텍스트가 매우 길어지는 경우의 버튼 너비 확인" />
+            <ButtonCheck id="state-long" label="텍스트가 길어지는 경우의 버튼 너비 확인" />
           </div>
         </div>
       </section>

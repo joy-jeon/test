@@ -90,18 +90,18 @@ export function IconPreview() {
 
           {/* Ghost True - Size별 검증 */}
           <div className="flex flex-col items-center gap-2">
-            <Icon name="aiSquare" ghost={true} size="sm" className="p-1" />
+            <Icon name="aiSquare" ghost={true} size="sm"/>
             <span className="text-[10px] text-da-t-discription">Ghost SM</span>
           </div>
 
           <div className="flex flex-col items-center gap-2">
-            <Icon name="aiSquare" ghost={true} size="md" className="p-1" />
+            <Icon name="aiSquare" ghost={true} size="md"/>
             <span className="text-[10px] text-da-t-discription">Ghost MD</span>
           </div>
 
           {/* Ghost True - Color/Tone 조합 검증 */}
           <div className="flex flex-col items-center gap-2">
-            <Icon name="aiPen" ghost={true} tone="primary" size="md" className="p-1" />
+            <Icon name="aiPen" ghost={true} tone="primary" size="md"/>
             <span className="text-[10px] text-da-t-discription">Ghost Primary</span>
           </div>
         </div>

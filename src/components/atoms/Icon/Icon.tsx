@@ -28,8 +28,8 @@ const iconVariants = cva('inline-block shrink-0 transition-colors duration-150',
       positive: 'text-da-t-positive',
     },
     ghost: {
-      true: 'cursor-pointer p-2 hover:bg-da-bg2 rounded',
-      false: 'cursor-default'
+      true: 'cursor-pointer p-0 hover:bg-da-bg2 rounded',
+      false: 'cursor-default p-0'
     }
   },
   defaultVariants: {
