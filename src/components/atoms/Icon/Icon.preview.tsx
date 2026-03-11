@@ -61,7 +61,7 @@ const ICON_NAMES: IconName[] = [
   'rowMove',
 ]
 
-const ICON_32_NAMES: IconName[] = ['setting', 'man', 'home', 'menu']
+const ICON_32_NAMES: IconName[] = ['setting', 'man', 'home', 'menu', 'aiAnswer']
 const ICON_16_NAMES: IconName[] = ['closeCircleFill']
 const ICON_60_ANIM_NAMES: IconName[] = ['aiAnimated']
 const ICON_60_STATE_NAMES: IconName[] = ['stateNodata60', 'stateNotFound60', 'state3_60']
@@ -178,7 +178,7 @@ export function IconPreview() {
       {/* Icon 32 (Custom) 영역 */}
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon 32 (Custom)</h3>
-        <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 md:max-w-2xl">
+        <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5 md:max-w-2xl">
           {ICON_32_NAMES.map((name, index) => (
             <div key={`32-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
               <div className="flex h-12 items-center justify-center">

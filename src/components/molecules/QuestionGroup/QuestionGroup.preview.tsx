@@ -44,12 +44,16 @@ export const QuestionGroupPreview = () => {
             options={[
             { id: 'region-1', label: '국내' },
             { id: 'region-2', label: '아시아' },
-            { id: 'region-3', label: '글로벌' },
-            { id: 'region-4', label: '직접입력' },
+            { id: 'region-3', label: '글로벌1' },
+            { id: 'region-4', label: '글로벌2' },
+            { id: 'region-5', label: '글로벌3' },
+            { id: 'region-6', label: '글로벌4' },
+            { id: 'region-7', label: '글로벌5' },
+            { id: 'region-n', label: '직접입력' },
             ]}
             selectedIds={selectedRegion}
             onOptionChange={handleToggle(setSelectedRegion)}
-            showInput={selectedRegion.includes('region-4')}
+            showInput={selectedRegion.includes('region-n')}
             inputPlaceholder="입력해 주세요"
             rightContent={
             <button type="button" className="flex items-center gap-[4px] text-da-t-primary text-[14px] hover:underline">

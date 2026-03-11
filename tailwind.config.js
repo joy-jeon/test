@@ -99,7 +99,8 @@ module.exports = {
       },
       boxShadow: {
         "da-input-text": "0 2px 2px 0 rgba(0, 0, 0, 0.05)",
-        "da-question-box": "1px 1px 10px 10px rgba(0, 0, 0, 0.10);"
+        "da-question-box": "1px 1px 10px 10px rgba(0, 0, 0, 0.10);",
+        "da-answer-box" : "1px_2px_14px_14px_rgba(84,0,202,0.20);"
       },
     }
   },

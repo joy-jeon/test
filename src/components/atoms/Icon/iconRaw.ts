@@ -5,6 +5,7 @@ export type IconRawName =
   | 'aiGenerate'
   | 'aiPen'
   | 'aiSquare'
+  | 'aiAnswer'
   | 'arrow-down'
   | 'arrow-left'
   | 'arrow-right'
@@ -58,9 +59,6 @@ export type IconRawName =
   | 'time'
   | 'unlock'
   | 'menu'
-  | 'aiGenerate60v1'
-  | 'aiGenerate60v2'
-  | 'aiGenerate60v3'
   | 'stateNotFound60'
   | 'stateNodata60'
   | 'state3_60';
@@ -532,118 +530,26 @@ export const ICON_RAW_MAP: Record<IconRawName, { viewBox: string; body: string }
 <path d="M24 22C24 22.5523 23.5523 23 23 23H9C8.44772 23 8 22.5523 8 22C8 21.4477 8.44772 21 9 21H23C23.5523 21 24 21.4477 24 22ZM24 16C24 16.5523 23.5523 17 23 17H9C8.44772 17 8 16.5523 8 16C8 15.4477 8.44772 15 9 15H23C23.5523 15 24 15.4477 24 16ZM24 10C24 10.5523 23.5523 11 23 11H9C8.44772 11 8 10.5523 8 10C8 9.44772 8.44772 9 9 9H23C23.5523 9 24 9.44772 24 10Z" fill="currentColor"/>
 `,
   },
+  aiAnswer: {
+    viewBox: '0 0 32 32',
+    body: String.raw`
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.10268 15.1644L10.8036 7.02232H12.461L15.1619 15.1644L23.2646 17.8784V19.5439L15.1619 22.2579L12.461 30.4H10.8036L8.10268 22.2579L0 19.5439V17.8784L8.10268 15.1644Z" fill="url(#paint0_linear_899_329)"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M23.3897 4.19202L24.7803 0H26.4377L27.8283 4.19202L32 5.58936V7.25485L27.8283 8.65219L26.4377 12.8442H24.7803L23.3897 8.65219L19.2179 7.25485V5.58936L23.3897 4.19202Z" fill="url(#paint1_linear_899_329)"/>
+    <defs>
+    <linearGradient id="paint0_linear_899_329" x1="2.22785" y1="-2.88129e-06" x2="35.4249" y2="6.42479" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#687AE6"/>
+    <stop offset="0.5" stop-color="#D867BF"/>
+    <stop offset="1" stop-color="#9CA8FF"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_899_329" x1="2.22785" y1="-2.88129e-06" x2="35.4249" y2="6.42479" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#687AE6"/>
+    <stop offset="0.5" stop-color="#D867BF"/>
+    <stop offset="1" stop-color="#9CA8FF"/>
+    </linearGradient>
+    </defs>
+`,
+  },
   
-    'aiGenerate60v1': {
-      viewBox: '0 0 60 60',
-      body: String.raw`
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7885 41.3143L16.0513 34.5258H18.8974L21.1602 41.3143L27.9487 43.5771V46.4232L21.1602 48.686L18.8974 55.4745H16.0513L13.7885 48.686L7 46.4232V43.5771L13.7885 41.3143Z" fill="url(#paint0_linear_199_3683)"/>
-  <path d="M33.2364 5.00015C33.0809 4.99992 32.9218 5 32.7585 5.00008L32.5199 5.00015H33.2364Z" fill="url(#paint1_linear_199_3683)"/>
-  <path d="M32.4743 5.00016L26.8711 5.00016C24.8587 5.00012 23.1978 5.0001 21.8448 5.11064C20.4395 5.22545 19.1478 5.47187 17.9344 6.09009C16.0528 7.04883 14.523 8.57863 13.5643 10.4603C12.9461 11.6736 12.6996 12.9654 12.5848 14.3706C12.4743 15.7236 12.4743 17.3845 12.4743 19.3969V30.0002H21.2243L23.7243 37.5002L32.4743 40.0002V50.0002H38.0777C40.0901 50.0002 41.7509 50.0002 43.1039 49.8897C44.5092 49.7749 45.8009 49.5285 47.0143 48.9102C48.8959 47.9515 50.4257 46.4217 51.3844 44.5401C52.0026 43.3267 52.2491 42.035 52.3639 40.6297C52.4744 39.2767 52.4744 37.6159 52.4743 35.6035V25.0002H34.9743C33.5936 25.0002 32.4743 23.8809 32.4743 22.5002V5.00016Z" fill="url(#paint2_linear_199_3683)"/>
-  <path d="M52.4743 24.9707L52.4744 24.716C52.4745 24.5515 52.4746 24.3912 52.4743 24.2347V24.9707Z" fill="url(#paint3_linear_199_3683)"/>
-  <path d="M51.9796 20.0002C51.7374 19.2591 51.409 18.5481 51.0007 17.8818C50.3792 16.8675 49.5306 16.0197 48.4076 14.8977L42.5768 9.06698C41.4548 7.9439 40.607 7.09533 39.5927 6.47376C38.9264 6.06545 38.2154 5.73714 37.4743 5.49495V20.0002H51.9796Z" fill="url(#paint4_linear_199_3683)"/>
-  <defs>
-  <linearGradient id="paint0_linear_199_3683" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#687AE6"/>
-  <stop offset="0.5" stop-color="#D867BF"/>
-  <stop offset="1" stop-color="#9CA8FF"/>
-  </linearGradient>
-  <linearGradient id="paint1_linear_199_3683" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#687AE6"/>
-  <stop offset="0.5" stop-color="#D867BF"/>
-  <stop offset="1" stop-color="#9CA8FF"/>
-  </linearGradient>
-  <linearGradient id="paint2_linear_199_3683" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#687AE6"/>
-  <stop offset="0.5" stop-color="#D867BF"/>
-  <stop offset="1" stop-color="#9CA8FF"/>
-  </linearGradient>
-  <linearGradient id="paint3_linear_199_3683" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#687AE6"/>
-  <stop offset="0.5" stop-color="#D867BF"/>
-  <stop offset="1" stop-color="#9CA8FF"/>
-  </linearGradient>
-  <linearGradient id="paint4_linear_199_3683" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#687AE6"/>
-  <stop offset="0.5" stop-color="#D867BF"/>
-  <stop offset="1" stop-color="#9CA8FF"/>
-  </linearGradient>
-  </defs>
-  `,
-    },
-    'aiGenerate60v2': {
-      viewBox: '0 0 60 60',
-      body: String.raw`
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7885 41.3143L16.0513 34.5258H18.8974L21.1602 41.3143L27.9487 43.5771V46.4232L21.1602 48.686L18.8974 55.4745H16.0513L13.7885 48.686L7 46.4232V43.5771L13.7885 41.3143Z" fill="url(#paint0_linear_249_1751)"/>
-  <path d="M33.2364 5.00015C33.0809 4.99992 32.9218 5 32.7585 5.00008L32.5199 5.00015H33.2364Z" fill="url(#paint1_linear_249_1751)"/>
-  <path d="M32.4743 5.00016L26.8711 5.00016C24.8587 5.00012 23.1978 5.0001 21.8448 5.11064C20.4395 5.22545 19.1478 5.47187 17.9344 6.09009C16.0528 7.04883 14.523 8.57863 13.5643 10.4603C12.9461 11.6736 12.6996 12.9654 12.5848 14.3706C12.4743 15.7236 12.4743 17.3845 12.4743 19.3969V30.0002H21.2243L23.7243 37.5002L32.4743 40.0002V50.0002H38.0777C40.0901 50.0002 41.7509 50.0002 43.1039 49.8897C44.5092 49.7749 45.8009 49.5285 47.0143 48.9102C48.8959 47.9515 50.4257 46.4217 51.3844 44.5401C52.0026 43.3267 52.2491 42.035 52.3639 40.6297C52.4744 39.2767 52.4744 37.6159 52.4743 35.6035V25.0002H34.9743C33.5936 25.0002 32.4743 23.8809 32.4743 22.5002V5.00016Z" fill="url(#paint2_linear_249_1751)"/>
-  <path d="M52.4743 24.9707L52.4744 24.716C52.4745 24.5515 52.4746 24.3912 52.4743 24.2347V24.9707Z" fill="url(#paint3_linear_249_1751)"/>
-  <path d="M51.9796 20.0002C51.7374 19.2591 51.409 18.5481 51.0007 17.8818C50.3792 16.8675 49.5306 16.0197 48.4076 14.8977L42.5768 9.06698C41.4548 7.9439 40.607 7.09533 39.5927 6.47376C38.9264 6.06545 38.2154 5.73714 37.4743 5.49495V20.0002H51.9796Z" fill="url(#paint4_linear_249_1751)"/>
-  <defs>
-  <linearGradient id="paint0_linear_249_1751" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D867BF"/>
-  <stop offset="0.5" stop-color="#9CA8FF"/>
-  <stop offset="1" stop-color="#687AE6"/>
-  </linearGradient>
-  <linearGradient id="paint1_linear_249_1751" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D867BF"/>
-  <stop offset="0.5" stop-color="#9CA8FF"/>
-  <stop offset="1" stop-color="#687AE6"/>
-  </linearGradient>
-  <linearGradient id="paint2_linear_249_1751" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D867BF"/>
-  <stop offset="0.5" stop-color="#9CA8FF"/>
-  <stop offset="1" stop-color="#687AE6"/>
-  </linearGradient>
-  <linearGradient id="paint3_linear_249_1751" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D867BF"/>
-  <stop offset="0.5" stop-color="#9CA8FF"/>
-  <stop offset="1" stop-color="#687AE6"/>
-  </linearGradient>
-  <linearGradient id="paint4_linear_249_1751" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#D867BF"/>
-  <stop offset="0.5" stop-color="#9CA8FF"/>
-  <stop offset="1" stop-color="#687AE6"/>
-  </linearGradient>
-  </defs>
-  `,
-    },
-    'aiGenerate60v3': {
-      viewBox: '0 0 60 60',
-      body: String.raw`
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7885 41.3143L16.0513 34.5258H18.8974L21.1602 41.3143L27.9487 43.5771V46.4232L21.1602 48.686L18.8974 55.4745H16.0513L13.7885 48.686L7 46.4232V43.5771L13.7885 41.3143Z" fill="url(#paint0_linear_249_1753)"/>
-  <path d="M33.2364 5.00015C33.0809 4.99992 32.9218 5 32.7585 5.00008L32.5199 5.00015H33.2364Z" fill="url(#paint1_linear_249_1753)"/>
-  <path d="M32.4743 5.00016L26.8711 5.00016C24.8587 5.00012 23.1978 5.0001 21.8448 5.11064C20.4395 5.22545 19.1478 5.47187 17.9344 6.09009C16.0528 7.04883 14.523 8.57863 13.5643 10.4603C12.9461 11.6736 12.6996 12.9654 12.5848 14.3706C12.4743 15.7236 12.4743 17.3845 12.4743 19.3969V30.0002H21.2243L23.7243 37.5002L32.4743 40.0002V50.0002H38.0777C40.0901 50.0002 41.7509 50.0002 43.1039 49.8897C44.5092 49.7749 45.8009 49.5285 47.0143 48.9102C48.8959 47.9515 50.4257 46.4217 51.3844 44.5401C52.0026 43.3267 52.2491 42.035 52.3639 40.6297C52.4744 39.2767 52.4744 37.6159 52.4743 35.6035V25.0002H34.9743C33.5936 25.0002 32.4743 23.8809 32.4743 22.5002V5.00016Z" fill="url(#paint2_linear_249_1753)"/>
-  <path d="M52.4743 24.9707L52.4744 24.716C52.4745 24.5515 52.4746 24.3912 52.4743 24.2347V24.9707Z" fill="url(#paint3_linear_249_1753)"/>
-  <path d="M51.9796 20.0002C51.7374 19.2591 51.409 18.5481 51.0007 17.8818C50.3792 16.8675 49.5306 16.0197 48.4076 14.8977L42.5768 9.06698C41.4548 7.9439 40.607 7.09533 39.5927 6.47376C38.9264 6.06545 38.2154 5.73714 37.4743 5.49495V20.0002H51.9796Z" fill="url(#paint4_linear_249_1753)"/>
-  <defs>
-  <linearGradient id="paint0_linear_249_1753" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#9CA8FF"/>
-  <stop offset="0.5" stop-color="#687AE6"/>
-  <stop offset="1" stop-color="#D867BF"/>
-  </linearGradient>
-  <linearGradient id="paint1_linear_249_1753" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#9CA8FF"/>
-  <stop offset="0.5" stop-color="#687AE6"/>
-  <stop offset="1" stop-color="#D867BF"/>
-  </linearGradient>
-  <linearGradient id="paint2_linear_249_1753" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#9CA8FF"/>
-  <stop offset="0.5" stop-color="#687AE6"/>
-  <stop offset="1" stop-color="#D867BF"/>
-  </linearGradient>
-  <linearGradient id="paint3_linear_249_1753" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#9CA8FF"/>
-  <stop offset="0.5" stop-color="#687AE6"/>
-  <stop offset="1" stop-color="#D867BF"/>
-  </linearGradient>
-  <linearGradient id="paint4_linear_249_1753" x1="17" y1="5" x2="59.9078" y2="16.6425" gradientUnits="userSpaceOnUse">
-  <stop stop-color="#9CA8FF"/>
-  <stop offset="0.5" stop-color="#687AE6"/>
-  <stop offset="1" stop-color="#D867BF"/>
-  </linearGradient>
-  </defs>
-  `,
-    },
     stateNotFound60: {
       viewBox: '0 0 60 60',
       body: String.raw`
