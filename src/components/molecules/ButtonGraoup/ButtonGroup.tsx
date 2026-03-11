@@ -51,7 +51,8 @@ export default function ButtonGroup({
   ...props 
 }: ButtonGroupProps) {
   return (
-    <div 
+    <div
+      data-component="button-wrap" 
       className={cn(buttonGroupVariants({ align, gap, width, direction }), className)} 
       {...props}
     >

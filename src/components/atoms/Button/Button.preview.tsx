@@ -136,16 +136,16 @@ export function ButtonPreview() {
           able={
             <>
               <Button variant="generate" size="generateSm" leftIcon={<Icon name="ai" size="md" />}>
-                과제생성
+                과제생성 32 sm
               </Button>
               <Button variant="generate" size="generateMd" leftIcon={<Icon name="ai" size="md" />}>
-                과제생성
+                과제생성 40 md
               </Button>
               <Button variant="generate" size="generateLg" leftIcon={<Icon name="ai" size={32} />}>
-                과제생성
+                과제생성 60 lg
               </Button>
               <Button variant="generate" size="generateXlg" leftIcon={<Icon name="ai" size="lg" />}>
-                과제생성
+                과제생성 80 xlg
               </Button>
             </>
           }
