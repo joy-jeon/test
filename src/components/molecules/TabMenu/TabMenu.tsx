@@ -1,21 +1,21 @@
 // src/components/molecules/Tab/TabMenu.tsx
-import { cn } from '@/lib/utils'
-import { Tab } from '../../atoms/Tab/Tab'
+import React, { ComponentPropsWithoutRef } from 'react';
+import { cn } from '@/lib/utils';
+import { Tab } from '../../atoms/Tab/Tab';
 
-interface TabItem {
-  id: string
-  label: string
-  icon?: React.ReactNode
-  disabled?: boolean
+// 1. TabProps에서 상위에서 제어할 props만 제외하고 id를 추가하여 TabItem 정의
+type TabProps = ComponentPropsWithoutRef<typeof Tab>;
+interface TabItem extends Omit<TabProps, 'selected' | 'onClick'> {
+  id: string;
 }
 
 interface TabMenuProps {
-  items: TabItem[]
-  activeId: string
-  onChange: (id: string) => void
-  rightElement?: React.ReactNode // 우측 코멘트/버튼 영역
-  widthType?: 'fit' | 'full'
-  className?: string
+  items: TabItem[];
+  activeId: string;
+  onChange: (id: string) => void;
+  rightElement?: React.ReactNode;
+  widthType?: 'fit' | 'full';
+  className?: string;
 }
 
 export function TabMenu({ 
@@ -27,33 +27,30 @@ export function TabMenu({
   className 
 }: TabMenuProps) {
   return (
-    <div className={cn(
-      "relative flex items-center justify-between border-b border-da-divider-content-line w-full",
+    <div data-componet="tablist-wrap" className={cn(
+      "relative flex items-end justify-between border-b border-da-divider-content-line w-full",
       className
     )}>
-      <nav className={cn(
-        "flex items-center gap-da-md", // 디자인 토큰 md(24px) 간격 적용
+      <nav role="tablist" className={cn(
+        "flex items-center gap-[1px]", 
         widthType === 'full' ? "flex-1" : "w-fit"
       )}>
-        {items.map((item) => (
+        {items.map(({ id, ...tabProps }) => (
           <Tab
-            key={item.id}
-            label={item.label}
-            icon={item.icon}
-            active={activeId === item.id}
-            disabled={item.disabled}
-            onClick={() => onChange(item.id)}
+            key={id}
+            {...tabProps} // 나머지 label, leftIcon, rightIcon 등을 그대로 전개
+            selected={activeId === id}
+            onClick={() => onChange(id)}
             className={widthType === 'full' ? "flex-1" : ""}
           />
         ))}
       </nav>
 
-      {/* 우측 슬롯 영역: 코멘트나 과제등록 버튼 등 배치 */}
       {rightElement && (
-        <div className="flex items-center gap-da-sm ml-da-md py-da-xsm">
+        <div data-componet="tablist-aside" className="flex items-end gap-da-s  py-da-xsm">
           {rightElement}
         </div>
       )}
     </div>
-  )
+  );
 }

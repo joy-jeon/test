@@ -1,10 +1,11 @@
 import { useState } from 'react'
 // 추가할 프리뷰 컴포넌트 임포트
 import { ButtonGroupPreview } from './ButtonGraoup/ButtonGroup.preview' 
+import { TabMenuPreview } from './TabMenu/TabMenuPreview' 
 
 const TAB_ITEMS = [
-  { key: 'buttonGroup', label: 'ButtonGroup' }, // 추가
-  { key: 'searchField', label: 'SearchField' },
+  { key: 'buttonGroup', label: 'ButtonGroup' }, 
+  { key: 'tabMenu', label: 'TabMenu' },
   { key: 'inputGroup', label: 'InputGroup' },
 ] as const
 
@@ -18,8 +19,8 @@ export function MoleculesPreview() {
     switch (activeTab) {
       case 'buttonGroup':
         return <ButtonGroupPreview />
-      case 'searchField':
-        return <div className="text-da-t-placeholder">SearchField Preview 준비 중...</div>
+      case 'tabMenu':
+        return <TabMenuPreview/>
       case 'inputGroup':
         return <div className="text-da-t-placeholder">InputGroup Preview 준비 중...</div>
       default:
