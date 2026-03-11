@@ -4,6 +4,7 @@ import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
 import FontPreview from '@/components/atoms/Font/Font.preview'
 import { TabPreview } from '@/components/atoms/Tab/Tab.preview'
 import { ButtonCheckPreview } from '@/components/atoms/Button/ButtonCheck.preview'
+import  InputTextPreview  from '@/components/atoms/Input/InputText.preview'
 
 const LAYOUT = {
   main: 'mx-auto w-full max-w-6xl',
@@ -25,6 +26,7 @@ const TAB_ITEMS = [
   { key: 'icon', label: 'Icon' },
   { key: 'font', label: 'Font' },
   { key: 'tab', label: 'Tab' },
+  { key: 'inputText', label: 'InputText' },
 ] as const
 
 export function AtomsPreview() {
@@ -35,6 +37,7 @@ export function AtomsPreview() {
     if (activeTab === 'icon') return <IconPreview />
     if (activeTab === 'font') return <FontPreview />
     if (activeTab === 'tab') return <TabPreview />
+    if (activeTab === 'inputText') return <InputTextPreview />
     return <ButtonPreview />
   }, [activeTab])
 

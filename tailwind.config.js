@@ -97,6 +97,10 @@ module.exports = {
       animation: {
         "gradient-flow-btn": "gradient-flow-btn 3s linear infinite",
       },
+      boxShadow: {
+        "da-input-text": "0 2px 2px 0 rgba(0, 0, 0, 0.05)",
+        "da-question-box": "1px 1px 10px 10px rgba(0, 0, 0, 0.10);"
+      },
     }
   },
   plugins: [],
