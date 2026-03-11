@@ -22,13 +22,19 @@ const iconVariants = cva('inline-block shrink-0 transition-colors duration-150',
     tone: {
       white: 'text-da-white',
       gray: 'text-da-icon-gray group-hover:text-da-icon-gray-hover group-active:text-da-icon-gray-hover',
+      notice:'text-da-lg-red3',
       primary: 'text-da-t-primary',
       disabled: 'text-da-t-disabled',
       positive: 'text-da-t-positive',
     },
+    ghost: {
+      true: 'cursor-pointer p-2 hover:bg-da-bg2 rounded',
+      false: 'cursor-default'
+    }
   },
   defaultVariants: {
     size: 'md',
+    ghost: false
   },
 })
 
@@ -60,7 +66,7 @@ const getViewBox = (name: IconName): string => {
   return '0 0 24 24'
 }
 
-const Icon = ({ name, size = 'md', className, tone, color, hoverColor, style, ...props }: IconProps) => {
+const Icon = ({ name, size = 'md', className, tone, color, hoverColor, ghost, style, ...props }: IconProps) => {
   const isLgAnimatedIcon = name === 'aiAnimated'
   const isSemanticSize = typeof size === 'string' && ['sm', 'md', 'lg'].includes(size)
   
@@ -87,7 +93,8 @@ const Icon = ({ name, size = 'md', className, tone, color, hoverColor, style, ..
       className={cn(
         iconVariants({ 
           size: isSemanticSize ? (size as 'sm' | 'md' | 'lg') : (name === 'aiAnimated' ? 'lg' : undefined), // Flow 애니메이션은 lg로 고정
-          tone: resolvedTone 
+          tone: resolvedTone, 
+          ghost
         }),
         !tone && 'text-[var(--icon-color)] group-hover:text-[var(--icon-hover-color)]',
         className

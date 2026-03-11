@@ -72,6 +72,73 @@ export function IconPreview() {
       <h2 className="text-xl font-semibold text-slate-900">Icon Preview</h2>
       <p className="mt-1 text-sm text-slate-600">대표 사이즈: sm(16px) / md(24px) / lg(60px)</p>
 
+      {/* Ghost 속성  */}
+      <section className="space-y-6">
+        <h2 className="text-da-h3 font-bold mb-6 pb-2 border-b border-da-divider-content-line text-da-t-title">
+          3. Ghost Variant (Interaction Check)
+        </h2>
+        <p className="text-da-b4 text-da-t-discription mb-4">
+          마우스 호버 시 배경색(da-bg1) 노출 및 커서(pointer) 변경
+        </p>
+        
+        <div className="flex items-center gap-8 p-4 border border-dashed border-da-divider-content-line rounded-lg">
+          {/* Default (Ghost false) */}
+          <div className="flex flex-col items-center gap-2">
+            <Icon name="aiSquare" ghost={false} size="md" />
+            <span className="text-[10px] text-da-t-discription">Default (No Hover)</span>
+          </div>
+
+          {/* Ghost True - Size별 검증 */}
+          <div className="flex flex-col items-center gap-2">
+            <Icon name="aiSquare" ghost={true} size="sm" className="p-1" />
+            <span className="text-[10px] text-da-t-discription">Ghost SM</span>
+          </div>
+
+          <div className="flex flex-col items-center gap-2">
+            <Icon name="aiSquare" ghost={true} size="md" className="p-1" />
+            <span className="text-[10px] text-da-t-discription">Ghost MD</span>
+          </div>
+
+          {/* Ghost True - Color/Tone 조합 검증 */}
+          <div className="flex flex-col items-center gap-2">
+            <Icon name="aiPen" ghost={true} tone="primary" size="md" className="p-1" />
+            <span className="text-[10px] text-da-t-discription">Ghost Primary</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Icon Color Usage (tone 활용) */}
+      <section className="mt-8">
+        <h3 className="text-base font-semibold text-slate-800">Icon Color Usage</h3>
+        <div className="mt-3 grid gap-4 md:grid-cols-1">
+          <div className="rounded-lg border border-slate-200 bg-da-white p-4">
+            <p className="text-xs font-medium text-slate-700">Icon tone prop (primary / disabled)</p>
+            <div className="mt-3 flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="primary" />
+                <span className="text-xs text-da-t-primary">tone="primary"</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="disabled" />
+                <span className="text-xs text-da-t-disabled">tone="disabled"</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="notice" />
+                <span className="text-xs text-da-t-disabled">tone="notice"</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="checkSmall" size="md" tone="positive" />
+                <span className="text-xs text-da-t-disabled">tone="positive"</span>
+              </div>
+              <div className="flex items-center gap-2 bg-gray-600 p-1 ">
+                <Icon name="checkSmall" size="md" tone="white" />
+                <span className="text-xs text-da-t-disabled">tone="white"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 1. Icon 16 (sm) 영역 */}
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon 16 (sm)</h3>
@@ -90,7 +157,7 @@ export function IconPreview() {
         </div>
       </section>
 
-      {/* 2. Icon 24 (md) 영역 */}
+      {/* Icon 24 (md) 영역 */}
       <section className="mt-6">
         <h3 className="text-base font-semibold text-slate-800">Icon 24 (md)</h3>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -108,7 +175,7 @@ export function IconPreview() {
         </div>
       </section>
 
-      {/* 3. Icon 32 (Custom) 영역 */}
+      {/* Icon 32 (Custom) 영역 */}
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon 32 (Custom)</h3>
         <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 md:max-w-2xl">
@@ -126,27 +193,9 @@ export function IconPreview() {
         </div>
       </section>
 
-      {/* 4. Icon Color Usage (tone 활용) */}
-      <section className="mt-8">
-        <h3 className="text-base font-semibold text-slate-800">Icon Color Usage</h3>
-        <div className="mt-3 grid gap-4 md:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 bg-da-white p-4">
-            <p className="text-xs font-medium text-slate-700">Icon tone prop (primary / disabled)</p>
-            <div className="mt-3 flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <Icon name="checkSmall" size="md" tone="primary" />
-                <span className="text-xs text-da-t-primary">tone="primary"</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Icon name="checkSmall" size="md" tone="disabled" />
-                <span className="text-xs text-da-t-disabled">tone="disabled"</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
-      {/* 5. Icon 60 (lg) 영역 */}
+      {/* Icon 60 (lg) 영역 */}
       <section className="mt-8">
         <h3 className="text-base font-semibold text-slate-800">Icon 60 (lg)</h3>
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:max-w-2xl">
