@@ -71,9 +71,9 @@
     --da-color-ani-3: #9CA8FF;
   
     /* --- Spacing --- */
-    --da-spacing-xsm: 6px;
-    --da-spacing-sm: 8px;
-    --da-spacing-md: 24px;
+    --da-space-xsm: 6px;
+    --da-space-sm: 8px;
+    --da-space-md: 24px;
   
     /* --- Typography: h1 --- */
     --da-fs-h1: 32px;

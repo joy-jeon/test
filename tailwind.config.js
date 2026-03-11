@@ -74,9 +74,9 @@ module.exports = {
         "da-ani-3": "var(--da-color-ani-3)",
       },
       spacing: {
-        "da-xsm": "var(--da-spacing-xsm)",
-        "da-sm": "var(--da-spacing-sm)",
-        "da-md": "var(--da-spacing-md)",
+        "da-space-xsm": "var(--da-space-xsm)",
+        "da-space-sm": "var(--da-space-sm)",
+        "da-space-md": "var(--da-space-md)",
       },
       fontSize: {
         "da-h1": ["var(--da-fs-h1)", { lineHeight: "var(--da-lh-h1)", letterSpacing: "var(--da-ls-h1)" }],
