@@ -19,9 +19,10 @@ interface LoadingBarProps {
 /**
  * LoadingBar (Atoms)
  * - GPU 가속이 적용된 SVG 기반 무한 루프 스피너
+ * - 멈춤 현상 없는 완전한 등속 회전 (1.2s linear)
  * - @param size: 크기 조절
  */
-const LoadingBar = ({ size = 40, className }: LoadingBarProps) => {
+export const LoadingBar = ({ size = 40, className }: LoadingBarProps) => {
   return (
     <div
       role="status"
@@ -37,12 +38,22 @@ const LoadingBar = ({ size = 40, className }: LoadingBarProps) => {
         fill="none"
         width={size}
         height={size}
-        className="animate-spin"
         style={{ 
           willChange: 'transform',
-          transformOrigin: 'center' 
+          transformOrigin: 'center',
+          /* [변경] 가감속을 제거한 linear 설정으로 멈춤 현상 없는 무한 회전 구현 */
+          animation: 'spin-linear 1.2s linear infinite',
         }}
       >
+        <style>
+          {`
+            @keyframes spin-linear {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+          `}
+        </style>
+        {/* 원본 SVG 구조 유지 */}
         <circle cx="52.0833" cy="12" r="11.4583" fill="#262626" />
         <ellipse cx="52.0827" cy="92.8572" rx="7.29167" ry="7.14286" fill="#A3A3A3" />
         <ellipse
@@ -93,5 +104,3 @@ const LoadingBar = ({ size = 40, className }: LoadingBarProps) => {
     </div>
   );
 };
-
-export default LoadingBar;

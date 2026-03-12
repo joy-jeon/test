@@ -8,20 +8,20 @@ const EmptyState = () => {
     <div className="relative flex flex-col items-center justify-center w-full min-h-screen bg-da-white overflow-hidden">
       
       {/* 1. 배경 레이어: public/images 폴더의 파일을 참조합니다 */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div data-component="obj-gradient" className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <motion.img
           src="/images/empty/nodata_generate_gradient.png"
           alt=""
-          className="w-[50rem] h-[31.25rem] opacity-60"
+          className="w-[50rem] h-[31.25rem] opacity-100"
           animate={{ scale: [1, 1.08, 1] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        <div className="absolute left-[10%] top-[20%]">
+        <div data-component="obj-left" className="absolute left-[10%] top-[20%]">
           <img src="/images/empty/nodata_generate_left.png" alt="" className="w-[12.5rem] h-auto" />
         </div>
 
-        <div className="absolute right-[10%] top-[15%]">
+        <div data-component="obj-right" className="absolute right-[10%] top-[15%]">
           <img src="/images/empty/nodata_generate_right.png" alt="" className="w-[15.625rem] h-auto opacity-80" />
         </div>
       </div>

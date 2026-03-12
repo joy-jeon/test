@@ -1,15 +1,14 @@
-import React from 'react';
-// 중괄호 { }를 제거하고 기본 임포트 방식으로 변경합니다.
-import EmptyState from '@/components/organisms/empty/EmptyState';
-import { AtomsPreview } from '@/components';
-import { MoleculesPreview } from '@/components/molecules/Molecules.preview';
+import Link from 'next/link'; 
 
-export default function Home() {
+export default function PublishIndex() {
   return (
-    <div className="">
-      <AtomsPreview />
-      <MoleculesPreview />
-      <EmptyState />
+    <div className="p-10">
+      <h1 className="text-da-h1 font-bold mb-4">Discovery Agent Publishing List</h1>
+      <ul className="list-disc pl-5">
+        <li><Link href="/preview/components">컴포넌트 가이드 (Atoms/Molecules)</Link></li>
+        <li><Link href="/preview/layout">전체 레이아웃 프리뷰</Link></li>
+        {/* 완성된 페이지들 링크 추가 */}
+      </ul>
     </div>
   );
 }

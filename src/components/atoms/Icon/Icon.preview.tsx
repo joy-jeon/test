@@ -65,6 +65,7 @@ const ICON_32_NAMES: IconName[] = ['setting', 'man', 'home', 'menu', 'aiAnswer']
 const ICON_16_NAMES: IconName[] = ['closeCircleFill']
 const ICON_60_ANIM_NAMES: IconName[] = ['aiAnimated']
 const ICON_60_STATE_NAMES: IconName[] = ['stateNodata60', 'stateNotFound60', 'state3_60']
+const ICON_LOGO_NAMES: IconName[] = ['logoDiscoveryAgent']
 
 export function IconPreview() {
   return (
@@ -212,6 +213,24 @@ export function IconPreview() {
           ))}
         </div>
       </section>
+
+      {/* Icon 로고 */}
+      <section className="mt-8">
+        <h3 className="text-base font-semibold text-slate-800">Icon symbol</h3>
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 md:max-w-2xl">
+          {ICON_LOGO_NAMES.map((name, index) => (
+            <div key={`logo-${name}`} className="rounded-lg border border-slate-200 bg-da-white px-3 py-4 text-center">
+              <div className="flex h-20 items-center justify-center">
+                <Icon name={name} />
+              </div>
+              <p className="mt-2 break-all text-xs text-slate-700">
+                {String(index + 1).padStart(2, '0')}. {name}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
     </section>
   )
 }
