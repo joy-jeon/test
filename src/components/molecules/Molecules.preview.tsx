@@ -3,10 +3,14 @@ import { useState } from 'react'
 import { ButtonGroupPreview } from './ButtonGraoup/ButtonGroup.preview' 
 import { TabMenuPreview } from './TabMenu/TabMenuPreview' 
 import { QuestionGroupPreview } from './QuestionGroup/QuestionGroup.preview'
+import { StepperPreview } from './QuestionGroup/Stepper.preview'
+import { AnswerPreview}  from './QuestionGroup/Answer.preview'  
 
 const TAB_ITEMS = [
   { key: 'buttonGroup', label: 'ButtonGroup' }, 
   { key: 'tabMenu', label: 'TabMenu' },
+  { key: 'stepper', label: 'Stepper' },
+  { key: 'answer', label: 'Answer' },
   { key: 'questionGroup', label: 'QuestionGroup' },
 ] as const
 
@@ -22,6 +26,10 @@ export function MoleculesPreview() {
         return <ButtonGroupPreview />
       case 'tabMenu':
         return <TabMenuPreview/>
+      case 'stepper':
+        return <StepperPreview />
+      case 'answer':
+        return <AnswerPreview />
       case 'questionGroup':
         return <QuestionGroupPreview />
       default:

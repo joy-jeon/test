@@ -7,7 +7,7 @@ const buttonCheckVariants = cva(
   {
     variants: {
       size: {
-        md: "h-[32px] px-[16px] rounded-[999px] text-da-b2",
+        md: "h-[32px] px-[16px] rounded-[999px] text-da-b3",
       },
       status: {
         default: "bg-da-white border-da-btn-line text-da-t-body",
