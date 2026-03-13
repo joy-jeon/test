@@ -12,6 +12,7 @@ const BUTTON_BASE = cv(
   "items-center",
   "justify-center",
   "gap-[6px]",
+  "flex-shrink-0",
   "truncate",
   "font-bold",
   "transition-all",

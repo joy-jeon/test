@@ -4,8 +4,16 @@ import { IconPreview } from '@/components/atoms/Icon/Icon.preview'
 import FontPreview from '@/components/atoms/Font/Font.preview'
 import { TabPreview } from '@/components/atoms/Tab/Tab.preview'
 import { ButtonCheckPreview } from '@/components/atoms/Button/ButtonCheck.preview'
-import  InputTextPreview  from '@/components/atoms/Input/InputText.preview'
-import  LoadingBarPreview  from '@/components/atoms/Loading/loading.preview'
+import InputTextPreview from '@/components/atoms/Input/InputText.preview'
+import ComboListPreview from '@/components/atoms/Input/ComboList.preview'
+import LoadingPreview from '@/components/atoms/Loading/ALoading.preview'
+import CheckboxPreview from '@/components/atoms/Checkbox/Checkbox.preview'
+import RadioPreview from '@/components/atoms/Radio/Radio.preview'
+import SwitchTogglePreview from '@/components/atoms/Switch/SwitchToggle.preview'
+import {ModalPreview} from '@/components/atoms/Modal/Modal.preview'
+import TitlePreview from '@/components/atoms/Font/Title.preview'
+import DividerPreview from './Divider/Divider.preview'
+import ComboPreview from './Input/Combo.preview'
 
 const LAYOUT = {
   main: 'mx-auto w-full max-w-6xl',
@@ -22,13 +30,22 @@ const TAB_STYLE = {
 } as const
 
 const TAB_ITEMS = [
+  { key: 'icon', label: 'Icon' },
   { key: 'button', label: 'Button' },
   { key: 'buttonCheck', label: 'ButtonCheck' },
-  { key: 'icon', label: 'Icon' },
   { key: 'font', label: 'Font' },
+  { key: 'title', label: 'Title' },
+  { key: 'divider', label: 'Divider' },
   { key: 'tab', label: 'Tab' },
   { key: 'inputText', label: 'InputText' },
+  { key: 'combo', label: 'Combo' },
+  { key: 'comboList', label: 'ComboList' },
+  { key: 'checkbox', label: 'Checkbox' },
+  { key: 'radio', label: 'Radio' },
+  { key: 'switch', label: 'Switch' },
   { key: 'loading', label: 'Loading' },
+  { key: 'modal', label: 'Modal' },
+  
 ] as const
 
 export function AtomsPreview() {
@@ -40,7 +57,16 @@ export function AtomsPreview() {
     if (activeTab === 'font') return <FontPreview />
     if (activeTab === 'tab') return <TabPreview />
     if (activeTab === 'inputText') return <InputTextPreview />
-    if (activeTab === 'loading') return <LoadingBarPreview />
+    if (activeTab === 'combo') return <ComboPreview />
+    if (activeTab === 'comboList') return <ComboListPreview />
+    if (activeTab === 'checkbox') return <CheckboxPreview />
+    if (activeTab === 'radio') return <RadioPreview />
+    if (activeTab === 'switch') return <SwitchTogglePreview />
+    if (activeTab === 'loading') return <LoadingPreview />
+    if (activeTab === 'modal') return <ModalPreview />
+    if (activeTab === 'title') return <TitlePreview />
+    if (activeTab === 'divider') return <DividerPreview />
+    
     
     return <ButtonPreview />
   }, [activeTab])

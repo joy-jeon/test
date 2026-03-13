@@ -62,7 +62,8 @@ export type IconRawName =
   | 'stateNotFound60'
   | 'stateNodata60'
   | 'state3_60'
-  | 'logoDiscoveryAgent';
+  | 'logoDiscoveryAgent'
+  | 'bullet';
 
 
 export const ICON_RAW_MAP: Record<IconRawName, { viewBox: string; body: string }> = {
@@ -580,6 +581,13 @@ export const ICON_RAW_MAP: Record<IconRawName, { viewBox: string; body: string }
   <path d="M10.5 0C10.5 0 11.0793 5.40743 13.336 7.66405C15.5926 9.92066 21 10.5 21 10.5C21 10.5 15.5926 11.0793 13.336 13.336C11.0793 15.5926 10.5 21 10.5 21C10.5 21 9.92066 15.5926 7.66405 13.336C5.40743 11.0793 0 10.5 0 10.5C0 10.5 5.40743 9.92066 7.66405 7.66405C9.92066 5.40743 10.5 0 10.5 0Z" fill="#687AE6"/>
 
 `,
-  }
-    
+  },
+  bullet: {
+    viewBox: '0 0 18 18',
+    body: String.raw`
+  <circle cx="9" cy="9" r="6" fill="white" stroke="#687AE6" stroke-width="6"/>
+`,
+  }    
+
+  
 };

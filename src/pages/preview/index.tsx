@@ -4,7 +4,7 @@ import { AtomsPreview } from '@/components/atoms/Atoms.preview'
 import { MoleculesPreview } from '@/components/molecules/Molecules.preview'
 
 const NAV_STYLE = {
-  wrapper: 'flex border-b border-gray-300 bg-gray-50 sticky top-0 z-[100]',
+  wrapper: 'flex border-b border-gray-300 bg-gray-50 sticky top-0 z-[10]',
   tab: 'px-8 py-4 text-sm font-bold transition-all border-r border-gray-300',
   active: 'bg-white text-blue-600 shadow-[inset_0_-3px_0_#2563eb]',
   inactive: 'text-gray-500 hover:bg-gray-100',

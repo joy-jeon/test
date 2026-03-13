@@ -169,11 +169,17 @@ export function ButtonPreview() {
               
               <Button variant="iconLine" aria-label="설정">
                 <Icon name="plus" size="md" />
-              </Button>
-              
+              </Button>              
              
               <Button variant="icon" aria-label="초기화 gray">
                 <Icon name="closeCircleFill" size="sm" tone="gray" />
+              </Button>
+
+              <Button variant="iconLine" aria-label="뒤로가기">
+                <Icon name="arrow-left" size="md" />
+              </Button>
+              <Button variant="iconLine" aria-label="삭제">
+                <Icon name="minus" size="md" />
               </Button>
             </>
           }

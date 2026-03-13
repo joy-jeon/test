@@ -22,7 +22,7 @@ interface LoadingBarProps {
  * - 멈춤 현상 없는 완전한 등속 회전 (1.2s linear)
  * - @param size: 크기 조절
  */
-export const LoadingBar = ({ size = 40, className }: LoadingBarProps) => {
+export const Loading = ({ size = 40, className }: LoadingBarProps) => {
   return (
     <div
       role="status"

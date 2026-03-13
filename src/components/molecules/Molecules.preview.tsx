@@ -5,6 +5,9 @@ import { TabMenuPreview } from './TabMenu/TabMenuPreview'
 import { QuestionGroupPreview } from './QuestionGroup/QuestionGroup.preview'
 import { StepperPreview } from './QuestionGroup/Stepper.preview'
 import { AnswerPreview}  from './QuestionGroup/Answer.preview'  
+import CardPreview from './Card/Card.preview'
+import LabeledInputPreview from './LabeledInput/LabeledInput.preview'
+import FormFieldPreview from './Form/FormFieldPreview'
 
 const TAB_ITEMS = [
   { key: 'buttonGroup', label: 'ButtonGroup' }, 
@@ -12,6 +15,10 @@ const TAB_ITEMS = [
   { key: 'stepper', label: 'Stepper' },
   { key: 'answer', label: 'Answer' },
   { key: 'questionGroup', label: 'QuestionGroup' },
+  { key: 'card', label: 'Card' },
+  { key: 'labeledInput', label: 'LabeledInput' },
+  { key: 'formfield', label: 'FormField' },
+
 ] as const
 
 type TabKey = (typeof TAB_ITEMS)[number]['key']
@@ -32,6 +39,12 @@ export function MoleculesPreview() {
         return <AnswerPreview />
       case 'questionGroup':
         return <QuestionGroupPreview />
+      case 'card':
+        return <CardPreview />
+      case 'labeledInput':
+        return <LabeledInputPreview />
+      case 'formfield':
+          return <FormFieldPreview />
       default:
         return null
     }

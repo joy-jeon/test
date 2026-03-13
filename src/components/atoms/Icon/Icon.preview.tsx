@@ -59,6 +59,7 @@ const ICON_NAMES: IconName[] = [
   'fileFailed',
   'filter',
   'rowMove',
+  'bullet'
 ]
 
 const ICON_32_NAMES: IconName[] = ['setting', 'man', 'home', 'menu', 'aiAnswer']
@@ -66,6 +67,7 @@ const ICON_16_NAMES: IconName[] = ['closeCircleFill']
 const ICON_60_ANIM_NAMES: IconName[] = ['aiAnimated']
 const ICON_60_STATE_NAMES: IconName[] = ['stateNodata60', 'stateNotFound60', 'state3_60']
 const ICON_LOGO_NAMES: IconName[] = ['logoDiscoveryAgent']
+
 
 export function IconPreview() {
   return (
@@ -157,6 +159,8 @@ export function IconPreview() {
           ))}
         </div>
       </section>
+
+      
 
       {/* Icon 24 (md) 영역 */}
       <section className="mt-6">

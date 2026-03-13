@@ -1,19 +1,21 @@
 import React from 'react';
 import { Header } from '@/components/organisms/Header';
-import { MainContainer } from './MainContainer';
+import { MainContainer, MainContainerProps } from './MainContainer';
 
 interface LayoutProps {
   children: React.ReactNode;
+  /** 페이지별 MainContainer 옵션 전달 */
+  mainProps?: Partial<MainContainerProps>;
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Layout = ({ children, mainProps }: LayoutProps) => {
   return (
     <div className="flex min-h-screen flex-col bg-da-white">
       {/* 고정 헤더가 필요할 경우 여기에 sticky/fixed 클래스를 추가 가능 */}
       <Header />
       
       {/* 페이지별 실제 컨텐츠 영역 */}
-      <MainContainer>
+      <MainContainer {...mainProps}>
         {children}
       </MainContainer>
       

@@ -78,6 +78,7 @@ module.exports = {
         "da-space-xsm": "var(--da-space-xsm)",
         "da-space-sm": "var(--da-space-sm)",
         "da-space-md": "var(--da-space-md)",
+        "da-space-lg": "var(--da-space-lg)",
       },
       fontSize: {
         "da-h1": ["var(--da-fs-h1)", { lineHeight: "var(--da-lh-h1)", letterSpacing: "var(--da-ls-h1)" }],
