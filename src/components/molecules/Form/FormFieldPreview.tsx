@@ -5,11 +5,11 @@ import ComboSelect from "@/components/atoms/Input/ComboSelect";
 
 const FormFieldPreview = () => {
   return (
-    <div className="p-[40px] flex flex-col gap-[40px] bg-da-bg1 min-h-screen">
+    <div className="p-[40px] flex flex-col gap-da-space-lg bg-da-bg1 min-h-screen">
       {/* 1. 세로 레이아웃 검증 */}
       <section>
         <h2 className="text-da-h2 border-b pb-[10px] mb-[24px]">1. Vertical Layout (col)</h2>
-        <div className="grid grid-cols-2 gap-[24px] max-w-[800px]">
+        <div className="grid grid-cols-2 gap-da-space-md max-w-[800px]">
           <FormField 
             label="아이디" 
             htmlFor="user-id" 

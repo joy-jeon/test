@@ -78,7 +78,7 @@ export const QuestionGroup = ({ children, className }: QuestionGroupProps) => {
   return (
     <div className="bg-white p-[24px] rounded-tl-[24px] rounded-tr-[24px] rounded-bl-[24px] shadow-da-question-box">
         <div 
-        className={cn("flex flex-col gap-[40px] overflow-y-auto pr-[8px]", className)}
+        className={cn("flex flex-col gap-da-space-lg overflow-y-auto pr-[8px]", className)}
         >
         {children}
         </div>

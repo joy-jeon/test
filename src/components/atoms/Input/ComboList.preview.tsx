@@ -12,10 +12,10 @@ const ComboListPreview = () => {
   const [markedValues, setMarkedValues] = useState<string[]>(["item02"]);
 
   return (
-    <div className="p-[40px] flex flex-col gap-[24px] bg-da-bg1 min-h-screen">
+    <div className="p-[40px] flex flex-col gap-da-space-md bg-da-bg1 min-h-screen">
       <h2 className="text-da-h2 border-b pb-[10px] mb-[12px]">ComboList Types</h2>
 
-      <div className="grid grid-cols-2 gap-[24px] max-w-[720px]">
+      <div className="grid grid-cols-2 gap-da-space-md max-w-[720px]">
         <div className="flex flex-col gap-[12px]">
           <p className="text-da-b2 text-da-t-body">체크박스 타입</p>
           <ComboList variant="checkbox" options={OPTIONS} selected={checkedValues} onChange={setCheckedValues} />

@@ -12,7 +12,7 @@ export const ButtonCheckPreview = () => {
   };
 
   return (
-    <div className="p-[40px] flex flex-col gap-[40px] bg-da-bg1 min-h-screen">
+    <div className="p-[40px] flex flex-col gap-da-space-lg bg-da-bg1 min-h-screen">
       {/* 1. 상태별 정적 노출 (Visual Specs) */}
       <section className="flex flex-col gap-[20px]">
         <h2 className="text-[24px] font-bold text-da-t-title border-b border-da-divider-content-line pb-[10px]">

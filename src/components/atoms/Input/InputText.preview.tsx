@@ -7,7 +7,7 @@ const InputTextPreview = () => {
   return (
     <div className="p-[40px] flex flex-col gap-[32px] bg-da-bg1 min-h-screen">
 
-      <div className="grid grid-cols-2 gap-[24px]">
+      <div className="grid grid-cols-2 gap-da-space-md">
         {/* Default */}
         <InputText id="inp-default" placeholder="텍스트를 입력하세요" />
 

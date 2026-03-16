@@ -75,10 +75,13 @@ module.exports = {
         "da-ani-3": "var(--da-color-ani-3)",
       },
       spacing: {
+        "da-space-xxsm": "var(--da-space-xxsm)",
         "da-space-xsm": "var(--da-space-xsm)",
         "da-space-sm": "var(--da-space-sm)",
+        "da-space-md-s": "var--da-space-md-s)",
         "da-space-md": "var(--da-space-md)",
         "da-space-lg": "var(--da-space-lg)",
+        "da-space-xlg": "var(--da-space-xlg)"
       },
       fontSize: {
         "da-h1": ["var(--da-fs-h1)", { lineHeight: "var(--da-lh-h1)", letterSpacing: "var(--da-ls-h1)" }],
@@ -101,7 +104,8 @@ module.exports = {
       boxShadow: {
         "da-input-text": "0 2px 2px 0 rgba(0, 0, 0, 0.05)",
         "da-question-box": "1px 1px 10px 10px rgba(0, 0, 0, 0.10);",
-        "da-answer-box" : "1px_2px_14px_14px_rgba(84,0,202,0.20);"
+        "da-answer-box" : "1px_2px_14px_14px_rgba(84,0,202,0.20);",
+        "da-box": "1px 1px 3px 3px rgba(0, 0, 0, 0.10);",
       },
     }
   },

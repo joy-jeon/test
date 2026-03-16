@@ -12,10 +12,10 @@ export const QuestionGroupPreview = () => {
   };
 
   return (
-    <div className="p-[40px] bg-da-bg1 min-h-screen flex flex-col items-center gap-[40px]">
+    <div className="p-[40px] bg-da-bg1 min-h-screen flex flex-col items-center gap-da-space-lg">
       
       {/* 채팅 섹션 컨테이너: 이미지의 너비감을 고려하여 max-w 설정 */}
-      <div className="w-full max-w-[800px] flex flex-col gap-[24px]">
+      <div className="w-full max-w-[800px] flex flex-col gap-da-space-md">
 
         {/* 2. 질문 그룹 영역 */}
         

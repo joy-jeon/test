@@ -42,7 +42,7 @@ const CardList = ({ tasks = [], showTotal = true, className }: CardListProps) =>
       */}
       <div 
         data-component="card-grid" 
-        className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-[24px]"
+        className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-da-space-md"
       >
         {tasks.map((task) => (
           <TaskCard

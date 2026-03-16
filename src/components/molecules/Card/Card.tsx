@@ -65,7 +65,7 @@ const Card = ({
 
       {/* 4th Row */}
       {tags.length > 0 && (
-        <div data-component="card-point" className="flex items-center place-content-evenly gap-[24px] w-full p-[8px_16px] bg-da-bg1 rounded-[8px] self-stretch">
+        <div data-component="card-point" className="flex items-center place-content-evenly gap-da-space-md w-full p-[8px_16px] bg-da-bg1 rounded-[8px] self-stretch">
           {tags.map((tag, index) => (
             <div key={index} className="flex items-center gap-[8px]">
               <Icon name={tag.icon} size="sm" className="text-da-t-description" />

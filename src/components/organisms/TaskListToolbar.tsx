@@ -90,16 +90,16 @@ const TaskListToolbar = ({
   };
 
   return (
-    <div data-component="task-list-toolbar" className="flex w-full flex-col gap-4">
+    <div data-component="task-list-toolbar" className="flex flex-col w-full gap-4">
       {/* 1행: 제목(좌) + 필터/조회 영역(우). md 폭에서 부족하면 우측 영역이 줄바꿈되도록 flex-wrap 적용 */}
-      <div data-component="toolbar-title-wrap" className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:justify-between md:ml-auto">
-        <h1 data-component="panel-left" className="text-da-h1 font-black text-da-t-title">{title}</h1>
+      <div data-component="toolbar-title-wrap" className="flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center md:justify-between">
+        <h1 data-component="panel-left" className="font-black text-da-h1 text-da-t-title">{title}</h1>
 
         {/* 필터 컨테이너: 개별 필터+라벨 묶음. 좁은 화면에서 자연스럽게 개행되도록 flex-wrap */}
         <div data-component="panel-right" className="flex w-full gap-[8px] sm:flex-row sm:items-center md:w-auto md:flex-wrap">
          
          {/* 콤보 group */}
-          <div data-component="combo-contain" className='flex gap-[24px]'>
+          <div data-component="combo-contain" className='flex gap-da-space-md'>
             {filters.map((filter, idx) => (
               <label key={filter.label} className="flex items-center min-w-[200px] gap-[16px] text-da-b2 text-da-t-body">
                 <span className="flex flex-shrink-0 font-bold text-da-t-title">{filter.label}</span>
@@ -112,8 +112,6 @@ const TaskListToolbar = ({
                   <ComboSelect
                     placeholder={filter.placeholder ?? '선택하세요'}
                     displayValue={getDisplayValue(filter.label) || filter.value}
-                    status="editable"
-                    isFullWidth
                     className="min-w-[180px]"
                     isOpen={openIndex === idx}
                     onToggle={() => setOpenIndex((prev) => (prev === idx ? null : idx))}
@@ -153,7 +151,7 @@ const TaskListToolbar = ({
 
 
       {/* 2행: 집계 정보(좌) + 과제등록 버튼(우). md 폭에서도 공간 부족 시 개행 지원 */}
-      <div data-component="toolbar-condition-wrap"  className="flex justify-end flex-col gap-[40px] md:flex-row md:flex-wrap md:items-center ">
+      <div data-component="toolbar-condition-wrap"  className="flex flex-col justify-end gap-da-space-lg md:flex-row md:flex-wrap md:items-center ">
 
         {/* 집계 표시 영역: 전체 건수 + 상태칩 */}
         <div data-component="condition-contain" className="flex flex-wrap items-center text-da-b2 text-da-t-body">

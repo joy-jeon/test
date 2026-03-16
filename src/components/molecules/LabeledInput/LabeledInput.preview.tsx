@@ -10,7 +10,7 @@ import InputText from "@/components/atoms/Input/InputText";
  */
 const LabeledInputPreview = () => {
   return (
-    <div className="flex flex-col gap-[40px] p-[32px] bg-da-bg1 min-h-screen">
+    <div className="flex flex-col gap-da-space-lg p-[32px] bg-da-bg1 min-h-screen">
       
       {/* 1. Row Layout Section */}
       <section className="flex flex-col gap-[16px]">

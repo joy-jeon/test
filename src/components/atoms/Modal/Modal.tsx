@@ -68,22 +68,22 @@ const ModalCard = React.forwardRef<HTMLDivElement, ModalProps>(
       <div
         className={clsx(
           'fixed inset-0 z-[60] flex items-start justify-center',
-          'pt-[60px] px-[24px]',
+          'pt-[3.75rem] px-[1.5rem]',
           'bg-[rgba(0,0,0,0.30)]',
           overlayClassName,
         )}
         onClick={handleOverlayClick}
       >
-        <div className="w-full flex justify-center">
+        <div className="flex justify-center w-full">
           <div
             ref={ref}
             role="dialog"
             aria-modal="true"
             aria-labelledby={title ? titleId : undefined}
             className={clsx(
-              'relative w-full max-w-[1440px] min-w-[1000px]',
-              'bg-da-white text-da-t-body rounded-[16px]',
-              'max-h-[calc(100vh-100px)] overflow-hidden',
+              'relative w-full max-w-[90rem] min-w-[62.5rem]',
+              'bg-da-white text-da-t-body rounded-[1rem]',
+              'max-h-[calc(100vh-6.25rem)] overflow-hidden',
               className,
             )}
           >
@@ -93,8 +93,8 @@ const ModalCard = React.forwardRef<HTMLDivElement, ModalProps>(
                 aria-label="닫기"
                 onClick={onClose}
                 className={clsx(
-                  'absolute right-[24px] top-[8px]',
-                  'h-[24px] w-[24px] flex items-center justify-center',
+                  'absolute right-[1.5rem] top-[0.5rem]',
+                  'h-[1.5rem] w-[1.5rem] flex items-center justify-center',
                   'transition-colors duration-150',
                 )}
               >
@@ -103,14 +103,14 @@ const ModalCard = React.forwardRef<HTMLDivElement, ModalProps>(
             )}
 
             {/* 모달 본문 */}
-            <div data-compoent="modal-contain" className="flex h-full flex-col px-[40px] pt-[40px]">
+            <div data-compoent="modal-contain" className="flex h-full flex-col pt-[2.5rem]">
               {title && (
-                <div data-compoent="modal-title" id={titleId} className="text-da-h2 font-bold text-da-t-title">
+                <div data-compoent="modal-title" id={titleId} className="font-bold text-da-h2 text-da-t-title px-[2.5rem]">
                   {title}
                 </div>
               )}
 
-              <div data-compoent="modal-body" className='overflow-y-auto custom-scrollbar'>
+              <div data-compoent="modal-body" className='overflow-y-auto custom-scrollbar px-[2.5rem]'>
                 <div
                    data-compoent="modal-body-inner"
                   className={clsx(
@@ -121,7 +121,7 @@ const ModalCard = React.forwardRef<HTMLDivElement, ModalProps>(
                   {children}
                 </div>
 
-                {footer && <div data-compoent="modal-footer" className="mt-8 pb-[40px]">{footer}</div>}
+                {footer && <div data-compoent="modal-footer" className="mt-8 pb-[2.5rem]">{footer}</div>}
               </div>
             </div>
           </div>

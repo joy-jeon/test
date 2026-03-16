@@ -14,7 +14,7 @@ const buttonGroupVariants = cva(
         none: "gap-0",
         sm: "gap-[8px]",    
         md: "gap-[16px]",    
-        lg: "gap-[24px]",    
+        lg: "gap-da-space-md",    
       },
       // 핵심: width 속성 추가
       width: {

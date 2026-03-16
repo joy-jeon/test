@@ -52,7 +52,7 @@ const ModalGenerate = () => {
         <Title
           level={2}
           as="h2"
-          className="mb-[40px]"
+          className="mb-da-space-lg"
           leftSlot={
             <Button variant="iconLine" aria-label="뒤로가기">
               <Icon name="arrow-left" size="md" />
@@ -69,11 +69,11 @@ const ModalGenerate = () => {
         </ButtonGroup>
       }
     >
-      <div data-component="area-desc" className="flex flex-col gap-[40px] py-[10px]">
+      <div data-component="area-desc" className="flex flex-col gap-da-space-lg py-[0.625rem]">
 
-        <div data-component="section" className="flex flex-col gap-[24px]">
+        <div data-component="section" className="flex flex-col gap-da-space-md">
           {/* 1. 회사명 */}
-          <FormField label="회사명" htmlFor="company-name" className="mb-[8px]">
+          <FormField label="회사명" htmlFor="company-name" className="mb-da-space-sm">
             <ComboField
               variant="checkmark"
               options={companyOptions}
@@ -85,7 +85,7 @@ const ModalGenerate = () => {
 
           {/* 2. 제안서 컨셉 및 방향 */}
           <div className="relative">
-            <div className="absolute right-0 top-0 z-10 flex items-center gap-[4px]">
+            <div className="absolute top-0 right-0 z-10 flex items-center gap-da-space-xxsm">
               <Title 
                 level={4} 
                 as="div"
@@ -100,7 +100,7 @@ const ModalGenerate = () => {
               <textarea
                 id="proposal-concept"
                 placeholder="입력하세요"
-                className="h-[120px] w-full resize-none rounded-[8px] border border-da-form-input-line p-[16px] text-da-b2 outline-none focus:border-da-form-input-line-focus"
+                className="h-[7.5rem] w-full resize-none rounded-[8px] border border-da-form-input-line p-[16px] text-da-b2 outline-none focus:border-da-form-input-line-focus"
               />
             </FormField>
           </div>
@@ -110,7 +110,7 @@ const ModalGenerate = () => {
         <Divider />
 
         {/* 3. 재무 목표 (3열 그리드) */}
-        <div data-component="section" className="grid grid-cols-3 gap-[24px]">
+        <div data-component="section" className="grid grid-cols-3 gap-da-space-md">
           <FormField label="재무 목표 유형" essential>
             <ComboField
               variant="checkmark"
@@ -143,10 +143,10 @@ const ModalGenerate = () => {
         <Divider />
 
         {/* 4. 복합 레이아웃 섹션 */}
-        <div data-component="section" className="flex gap-[24px]">
+        <div data-component="section" className="flex gap-da-space-md">
 
           {/* 왼쪽: 일정 및 비용 */}
-          <div data-component="panel-left" className="grid grid-cols-2 gap-[24px] w-full">
+          <div data-component="panel-left" className="grid w-full grid-cols-2 gap-da-space-md">
             <div data-component="panel-left-col" className="flex flex-1 flex-col gap-[8px]">
               <div className="flex gap-[4px]">
                 <FormField label="과제 시작 연도" layout="row" labelWidth="w-[130px]">
@@ -178,7 +178,7 @@ const ModalGenerate = () => {
             {/* R&D 비용 영역 */}
             <div data-component="panel-left-col" className="flex flex-1 flex-col gap-[6px]">
               <div className="flex items-center justify-between">
-                <label className="text-da-b2 font-bold text-da-t-body">R&D 비용(억원)</label>
+                <label className="font-bold text-da-b2 text-da-t-body">R&D 비용(억원)</label>
                 <Button
                   variant="primarySolid"
                   size="sm"
@@ -217,17 +217,16 @@ const ModalGenerate = () => {
           </div>
 
           {/* 오른쪽: 파일 업로드 박스 */}
-          <div data-component="panel-right" className="w-[600px] rounded-[16px] border border-da-form-input-line p-[24px] bg-da-white">
-            <p className="mb-[24px] text-da-b1 text-da-t-body">
+          <div data-component="panel-right" className="flex flex-col shrink-0 w-[530px] rounded-[16px] p-da-space-md bg-da-white shadow-da-box">
+            <p className="mb-da-space-md text-da-b1 text-da-t-body">
               *모든 파일은 PDF형식으로 파일당 30MB 미만으로만 업로드가능합니다.
             </p>
             <div className="flex items-center justify-between">
-              <span className="text-da-b2 font-bold text-da-t-body">WTA 평가 결과서</span>
-              <div className="flex items-center gap-[12px]">
+              <span className="font-bold text-da-b2 text-da-t-body">WTA 평가 결과서</span>
+              <div className="flex items-center gap-da-space-md-s">
                 <Button
                   variant="primarySolid"
                   size="sm"
-                  leftIcon={<Icon name="fileDownUpload" size="sm" />}
                 >
                   파일선택
                 </Button>

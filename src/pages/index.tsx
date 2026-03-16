@@ -78,10 +78,10 @@ export default function PageIndex() {
       </div>
 
       {/* Title + actions */}
-      <div className="mt-5 flex flex-wrap items-end justify-between gap-3">
+      <div className="flex flex-wrap items-end justify-between gap-3 mt-5">
         <div>
-          <p className="text-da-b4 font-semibold uppercase tracking-wide text-da-t-placeholder">Publishing Navigator</p>
-          <h1 className="mt-1 text-da-h1 font-bold text-da-t-title">페이지 작업물 인덱스</h1>
+          <p className="font-semibold tracking-wide uppercase text-da-b4 text-da-t-placeholder">Publishing Navigator</p>
+          <h1 className="mt-1 font-bold text-da-h1 text-da-t-title">페이지 작업물 인덱스</h1>
           <p className="mt-2 text-da-b2 text-da-t-discription">
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function PageIndex() {
       </div>
 
       {/* Rows (compact grid) */}
-      <div className="mt-8 overflow-hidden rounded-2xl border border-da-divider-top-content-line bg-da-white shadow-sm">
+      <div className="mt-8 overflow-hidden border shadow-sm rounded-2xl border-da-divider-top-content-line bg-da-white">
         <div className="hidden grid-cols-[1.2fr_1fr_0.8fr_1.8fr_1.2fr_auto] items-center gap-3 border-b border-da-divider-top-content-line px-5 py-3 text-da-b4 font-semibold tracking-wide text-da-t-placeholder md:grid">
           <span>Page</span>
           <span>Route</span>
@@ -109,11 +109,11 @@ export default function PageIndex() {
               className="grid grid-cols-1 gap-3 px-5 py-4 md:grid-cols-[1.2fr_1fr_0.8fr_1.8fr_1.2fr_auto] md:items-center"
             >
               <div className="flex flex-col gap-1">
-                <h2 className="text-da-b3 font-bold text-da-t-title leading-tight">{page.name}</h2>
+                <h2 className="font-bold leading-tight text-da-b3 text-da-t-title">{page.name}</h2>
                 <p className="text-da-b4 text-da-t-placeholder md:hidden">{page.description}</p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2 rounded-lg bg-da-bg1 px-3 py-2 text-da-b4 text-da-t-body">
+              <div className="flex flex-wrap items-center gap-2 px-3 py-2 rounded-lg bg-da-bg1 text-da-b4 text-da-t-body">
                 <span className="text-da-t-body">{page.route}</span>
               </div>
 
